@@ -1,12 +1,14 @@
 ## OT Monster Maker for TFS 1.3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application link
+https://egzot.github.io/otmonstermaker/
 
-## Available Scripts
 
-In the project directory, you can run:
+## Start development
+* Clone repository
+* Install all dependencies (you find them in package.json)
 
-### `npm start`
+### Use `npm start` or `run.bat` (windows)
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,7 +16,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm run build`
+## Build
+
+### Use `npm run build` or `build.bat` (windows)
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
