@@ -10,6 +10,9 @@ const tabStyle = {
 
 const monsterMakerDefaultH1 = {
   textAlign: 'center',
+  fontSize: "2em",
+  margin: ".67em 0",
+  fontWeight: 700
 };
 
 class MonsterMakerTabDefault extends React.Component {

@@ -1,3 +1,7 @@
+*, ::after, ::before {
+  box-sizing: initial;
+}
+
 .App {
   text-align: center;
 }
