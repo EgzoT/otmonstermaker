@@ -709,7 +709,7 @@ class AttacksData {
         if (allXMLattacks.length > 0) {
             fileXMLString += '\n' + indentation + '<attacks>';
 
-            allXMLattacks.map((variable, index) => {
+            allXMLattacks.forEach((variable, index) => {
                 fileXMLString += '\n' + variable;
             });
 

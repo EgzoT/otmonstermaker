@@ -1,10 +1,6 @@
 import React from 'react';
-
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
-import MonsterMakerInputSelect from './MonsterMakerInputSelect.js';
-import MonsterMakerItemsTable from './MonsterMakerItemsTable.js';
-import MonsterMakerButton from './MonsterMakerButton.js';
+import { areaEffect, shotEffect } from '../consts'
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
@@ -13,22 +9,6 @@ const tabStyle = {
   backgroundColor: 'rgba(255, 255, 255, 0.6)',
   borderRadius: 25
 }
-
-const areaEffect = ["redspark", "bluebubble", "poff", "yellowspark", "explosionarea", "explosion", "firearea", "yellowbubble", "greenbubble",
-"blackspark", "teleport", "energy", "blueshimmer", "redshimmer", "greenshimmer", "fire", "greenspark", "mortarea", "greennote", "rednote",
-"poison", "yellownote", "purplenote", "bluenote", "whitenote", "bubbles", "dice", "giftwraps", "yellowfirework", "redfirework", "bluefirework",
-"stun", "sleep", "watercreature", "groundshaker", "hearts", "fireattack", "energyarea", "smallclouds", "holydamage", "bigclouds", "icearea",
-"icetornado", "iceattack", "stones", "smallplants", "carniphila", "purpleenergy", "yellowenergy", "holyarea", "bigplants", "cake", "giantice",
-"watersplash", "plantattack", "tutorialarrow", "tutorialsquare", "mirrorhorizontal", "mirrorvertical", "skullhorizontal", "skullvertical",
-"assassin", "stepshorizontal", "bloodysteps", "stepsvertical", "yalaharighost", "bats", "smoke", "insects", "dragonhead", "orcshaman",
-"orcshamanfire", "thunder", "ferumbras", "confettihorizontal", "confettivertical", "blacksmoke", "redsmoke", "yellowsmoke", "greensmoke",
-"purplesmoke"];
-
-const shootEffect = ["spear", "bolt", "arrow", "fire", "energy", "poisonarrow", "burstarrow", "throwingstar", "throwingknife", "smallstone",
-"death", "largerock", "snowball", "powerbolt", "poison", "infernalbolt", "huntingspear", "enchantedspear", "redstar", "greenstar", "royalspear",
-"sniperarrow", "onyxarrow", "piercingbolt", "whirlwindsword", "whirlwindaxe", "whirlwindclub", "etherealspear", "ice", "earth", "holy",
-"suddendeath", "flasharrow", "flammingarrow", "shiverarrow", "energyball", "smallice", "smallholy", "smallearth", "eartharrow", "explosion",
-"cake", "tarsalarrow", "vortexbolt", "prismaticbolt", "crystallinearrow", "drillbolt", "envenomedarrow", "gloothspear", "simplearrow"];
 
 class MonsterMakerTabAttacks extends React.Component {
   constructor(props) {
@@ -775,7 +755,7 @@ class MonsterMakerTabAttacks extends React.Component {
               </td>
               <td>
                 <MonsterMakerInputSelect
-                    selectItems={ shootEffect }
+                    selectItems={ shotEffect }
                     value={ this.state.shooteffect }
                     onChange={ this.onChangeShooteffect }
                     disabled={ !this.state.shooteffectCheckbox }

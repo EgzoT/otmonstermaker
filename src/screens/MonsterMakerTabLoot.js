@@ -1,10 +1,7 @@
 import React from 'react';
 
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
-import MonsterMakerInputSelect from './MonsterMakerInputSelect.js';
-import MonsterMakerItemsTable from './MonsterMakerItemsTable.js';
-import MonsterMakerButton from './MonsterMakerButton.js';
+import { subtype } from '../consts'
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
@@ -13,9 +10,6 @@ const tabStyle = {
   backgroundColor: 'rgba(255, 255, 255, 0.6)',
   borderRadius: 25
 }
-
-const subtype = ['water', 'blood', 'beer', 'slime', 'lemonade', 'milk', 'manafluid', 'lifefluid', 'oil',
-'urine', 'coconut milk', 'wine', 'mud', 'fruit juice', 'lava', 'rum', 'swamp', 'tea', 'mead'];
 
 class MonsterMakerTabLoot extends React.Component {
   constructor(props) {

@@ -3,7 +3,6 @@ import React from 'react';
 const trStyle = {
   backgroundColor: '#262626',
   whiteSpace: 'pre'
-  //backgroundColor: '#555555'
 }
 
 const trStyleHover = {

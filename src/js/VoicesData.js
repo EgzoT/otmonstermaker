@@ -137,7 +137,7 @@ class VoicesData {
 
         if (allXMLvoices.length > 0) {
             fileXMLString += '\n' + indentation + '<voices interval="' + this.getInterval() + '" chance="' + this.getChance() + '">';
-            allXMLvoices.map((variable, index) => {
+            allXMLvoices.forEach((variable, index) => {
                 fileXMLString += '\n' + variable;
             });
             fileXMLString += '\n' + indentation + '</voices>';

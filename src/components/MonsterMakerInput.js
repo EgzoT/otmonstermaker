@@ -1,9 +1,5 @@
 import React from 'react';
 
-/*const MonsterMakerInputStyle = {
-  fontSize: '20px'
-};*/
-
 class MonsterMakerInput extends React.Component {
   render() {
     const style = this.props.disabled ? {...this.props.style, ...{opacity: 0.5}} : this.props.style;

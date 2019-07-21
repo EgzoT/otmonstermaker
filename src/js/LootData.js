@@ -451,7 +451,7 @@ class LootData {
         if (lootData.text != null) {
             loot = loot + ' text="' + lootData.text + '"';
         }
-        loot = loot + ' chance="' + lootData.chance + '"' + '/>';
+        loot = loot + ' chance="' + lootData.chance + '" />';
         if (lootData.comment != null) {
             loot = loot + ' <!--' + lootData.comment + '-->';
         }
@@ -477,8 +477,9 @@ class LootData {
         var allXMLloot = this.getAllXMLLoot(indentation, firstIndentation);
 
         if (allXMLloot.length > 0) {
-            fileXMLString += '\n' + indentation + '<loot>';
-            allXMLloot.map((variable, index) => {
+            fileXMLString += '\n' + indentation;
+            fileXMLString += '<loot>';
+            allXMLloot.forEach((variable, index) => {
                 fileXMLString += '\n' + variable;
             });
             fileXMLString += '\n' + indentation + '</loot>';

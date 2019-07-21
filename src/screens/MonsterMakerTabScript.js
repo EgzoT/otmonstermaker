@@ -1,7 +1,6 @@
 import React from 'react';
 
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
+import { MonsterMakerLabel, MonsterMakerInput} from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
