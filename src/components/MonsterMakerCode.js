@@ -6,7 +6,6 @@ const containerStyle = {
     margin: 5,
     overflow: 'auto',
 
-    //textAlign: 'center',
     backgroundColor: '#000000',
     color: '#FFFFFF',
 

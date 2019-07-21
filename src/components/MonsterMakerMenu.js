@@ -2,18 +2,7 @@ import React from 'react';
 
 import MonsterMakerMenuItem from './MonsterMakerMenuItem';
 
-import MonsterMakerTabMonster from './MonsterMakerTabMonster';
-import MonsterMakerTabFlags from './MonsterMakerTabFlags';
-import MonsterMakerTabScript from './MonsterMakerTabScript';
-import MonsterMakerTabAttacks from './MonsterMakerTabAttacks';
-import MonsterMakerTabDefenses from './MonsterMakerTabDefenses';
-import MonsterMakerTabElements from './MonsterMakerTabElements';
-import MonsterMakerTabImmunities from './MonsterMakerTabImmunities';
-import MonsterMakerTabSummons from './MonsterMakerTabSummons';
-import MonsterMakerTabVoices from './MonsterMakerTabVoices';
-import MonsterMakerTabLoot from './MonsterMakerTabLoot';
-import MonsterMakerTabIO from './MonsterMakerTabIO';
-import MonsterMakerTabDefault from './MonsterMakerTabDefault';
+import * as tabs from '../screens';
 
 const monsterMakerMenuStyle = {
   backgroundColor: '#333',
@@ -151,18 +140,18 @@ class MonsterMakerMenu extends React.Component {
           />
         </ul>
         <div>
-          { this.state.activeItem === "Monster" ? <MonsterMakerTabMonster appData={this.props.appData} /> : null }
-          { this.state.activeItem === "Flags" ? <MonsterMakerTabFlags appData={this.props.appData} /> : null }
-          { this.state.activeItem === "Script" ? <MonsterMakerTabScript appData={this.props.appData} /> : null }
-          { this.state.activeItem === "Attacks" ? <MonsterMakerTabAttacks appData={this.props.appData} activeItem={this.state.attacksActiveItem} changeActiveItem={this.changeAttacksActiveItem} /> : null }
-          { this.state.activeItem === "Defenses" ? <MonsterMakerTabDefenses appData={this.props.appData} activeItem={this.state.defensesActiveItem} changeActiveItem={this.changeDefensesActiveItem} /> : null }
-          { this.state.activeItem === "Elements" ? <MonsterMakerTabElements appData={this.props.appData} /> : null }
-          { this.state.activeItem === "Immunities" ? <MonsterMakerTabImmunities appData={this.props.appData} /> : null }
-          { this.state.activeItem === "Summons" ? <MonsterMakerTabSummons appData={this.props.appData} activeItem={this.state.summonsActiveItem} changeActiveItem={this.changeSummonsActiveItem} /> : null }
-          { this.state.activeItem === "Voices" ? <MonsterMakerTabVoices appData={this.props.appData} activeItem={this.state.voicesActiveItem} changeActiveItem={this.changeVoicesActiveItem} /> : null }
-          { this.state.activeItem === "Loot" ? <MonsterMakerTabLoot appData={this.props.appData} activeItem={this.state.lootActiveItem} changeActiveItem={this.changeLootActiveItem} /> : null }
-          { this.state.activeItem === "I/O" ? <MonsterMakerTabIO appData={this.props.appData} /> : null }
-          { this.state.activeItem === "" ? <MonsterMakerTabDefault /> : null }
+          { this.state.activeItem === "Monster" ? <tabs.MonsterMakerTabMonster appData={this.props.appData} /> : null }
+          { this.state.activeItem === "Flags" ? <tabs.MonsterMakerTabFlags appData={this.props.appData} /> : null }
+          { this.state.activeItem === "Script" ? <tabs.MonsterMakerTabScript appData={this.props.appData} /> : null }
+          { this.state.activeItem === "Attacks" ? <tabs.MonsterMakerTabAttacks appData={this.props.appData} activeItem={this.state.attacksActiveItem} changeActiveItem={this.changeAttacksActiveItem} /> : null }
+          { this.state.activeItem === "Defenses" ? <tabs.MonsterMakerTabDefenses appData={this.props.appData} activeItem={this.state.defensesActiveItem} changeActiveItem={this.changeDefensesActiveItem} /> : null }
+          { this.state.activeItem === "Elements" ? <tabs.MonsterMakerTabElements appData={this.props.appData} /> : null }
+          { this.state.activeItem === "Immunities" ? <tabs.MonsterMakerTabImmunities appData={this.props.appData} /> : null }
+          { this.state.activeItem === "Summons" ? <tabs.MonsterMakerTabSummons appData={this.props.appData} activeItem={this.state.summonsActiveItem} changeActiveItem={this.changeSummonsActiveItem} /> : null }
+          { this.state.activeItem === "Voices" ? <tabs.MonsterMakerTabVoices appData={this.props.appData} activeItem={this.state.voicesActiveItem} changeActiveItem={this.changeVoicesActiveItem} /> : null }
+          { this.state.activeItem === "Loot" ? <tabs.MonsterMakerTabLoot appData={this.props.appData} activeItem={this.state.lootActiveItem} changeActiveItem={this.changeLootActiveItem} /> : null }
+          { this.state.activeItem === "I/O" ? <tabs.MonsterMakerTabIO appData={this.props.appData} /> : null }
+          { this.state.activeItem === "" ? <tabs.MonsterMakerTabDefault /> : null }
         </div>
       </div>
     );

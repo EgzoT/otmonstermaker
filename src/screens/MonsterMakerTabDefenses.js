@@ -1,10 +1,7 @@
 import React from 'react';
 
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
-import MonsterMakerInputSelect from './MonsterMakerInputSelect.js';
-import MonsterMakerItemsTable from './MonsterMakerItemsTable.js';
-import MonsterMakerButton from './MonsterMakerButton.js';
+import { defenseName, areaEffect } from '../consts'
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
@@ -14,16 +11,6 @@ const tabStyle = {
   borderRadius: 25
 }
 
-const defenseName = ["healing", "speed", "invisible"];
-const areaEffect = ["redspark", "bluebubble", "poff", "yellowspark", "explosionarea", "explosion", "firearea", "yellowbubble", "greenbubble",
-"blackspark", "teleport", "energy", "blueshimmer", "redshimmer", "greenshimmer", "fire", "greenspark", "mortarea", "greennote", "rednote",
-"poison", "yellownote", "purplenote", "bluenote", "whitenote", "bubbles", "dice", "giftwraps", "yellowfirework", "redfirework", "bluefirework",
-"stun", "sleep", "watercreature", "groundshaker", "hearts", "fireattack", "energyarea", "smallclouds", "holydamage", "bigclouds", "icearea",
-"icetornado", "iceattack", "stones", "smallplants", "carniphila", "purpleenergy", "yellowenergy", "holyarea", "bigplants", "cake", "giantice",
-"watersplash", "plantattack", "tutorialarrow", "tutorialsquare", "mirrorhorizontal", "mirrorvertical", "skullhorizontal", "skullvertical",
-"assassin", "stepshorizontal", "bloodysteps", "stepsvertical", "yalaharighost", "bats", "smoke", "insects", "dragonhead", "orcshaman",
-"orcshamanfire", "thunder", "ferumbras", "confettihorizontal", "confettivertical", "blacksmoke", "redsmoke", "yellowsmoke", "greensmoke",
-"purplesmoke"];
 
 class MonsterMakerTabDefenses extends React.Component {
   constructor(props) {

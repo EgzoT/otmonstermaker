@@ -71,7 +71,7 @@ class AppData {
 
     //Generate XML
 
-    getXML = (/*indentation*/) => {
+    getXML = () => {
         var indentation = '\t';
         var fileXMLString = '';
 
@@ -79,14 +79,14 @@ class AppData {
         fileXMLString += this.getMonster().getXML();
         fileXMLString += this.getFlags().getXML();
         fileXMLString += this.getScript().getXML();
-        fileXMLString += this.getAttacks().getXML('\t', '\t\t');
-        fileXMLString += this.getDefenses().getXML('\t', '\t\t');
+        fileXMLString += this.getAttacks().getXML(indentation, indentation + indentation);
+        fileXMLString += this.getDefenses().getXML(indentation, indentation + indentation);
         fileXMLString += this.getElements().getXML();
         fileXMLString += this.getImmunities().getXML();
-        fileXMLString += this.getSummons().getXML('\t', '\t\t');
-        fileXMLString += this.getVoices().getXML('\t', '\t\t');
-        fileXMLString += this.getLoot().getXML('\t', '\t\t');
-        fileXMLString += '\n' + '</monster>';
+        fileXMLString += this.getSummons().getXML(indentation, indentation + indentation);
+        fileXMLString += this.getVoices().getXML(indentation, indentation + indentation);
+        fileXMLString += this.getLoot().getXML(indentation, indentation + indentation);
+        fileXMLString += '\n</monster>';
 
         return fileXMLString;
     }
@@ -162,12 +162,12 @@ class AppData {
     parseXMLFile = () => {
         var itemsXMLString = [];
 
-        this.getIO().getFileText().split('\n').map(line => {
+        this.getIO().getFileText().split('\n').forEach(line => {
             itemsXMLString.push(line.replace(/\t/g, ''));
         });
 
         var parseSectors = [];
-        itemsXMLString.map(line => {
+        itemsXMLString.forEach(line => {
             let startSign = line.search('<');
             if (startSign >= 0) {
                 if (line.substring(startSign + 1, startSign + 2) === '/') {
@@ -275,9 +275,9 @@ class AppData {
             }
         });
     }
-    
+
     getLineMonstersXML = () => {
-        return '<monster name="' + this.getMonster().getName() + '"  file="' + this.getIO().getName() + '.xml' + '"  />';
+        return '<monster name="' + this.getMonster().getName() + '"  file="' + this.getIO().getName() + '.xml"  />';
     }
 
     loadValuesFromLocalStorage = () => {

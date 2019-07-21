@@ -1,9 +1,6 @@
 import React from 'react';
 
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
-import MonsterMakerButton from './MonsterMakerButton.js';
-import MonsterMakerCode from './MonsterMakerCode.js';
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerButton, MonsterMakerCode} from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
@@ -52,7 +49,7 @@ class MonsterMakerTabIO extends React.Component {
     if (newName.substring(newName.length - 4, newName.length) === '.xml') {
       newName = newName.substring(0, newName.length - 4);
     }
-    this.state.fileOwnName = newName;
+    this.setState({ fileOwnName: newName })
   }
 
   downloadFile = () => {

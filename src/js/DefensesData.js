@@ -315,7 +315,7 @@ class DefensesData {
         if (allXMLdefenses.length > 0) {
             fileXMLString += '\n' + indentation + '<defenses armor="' + this.getArmor() + '" defense="' + this.getDefense() + '">';
             
-            allXMLdefenses.map((variable, index) => {
+            allXMLdefenses.forEach((variable, index) => {
                 fileXMLString += '\n' + variable;
             });
 

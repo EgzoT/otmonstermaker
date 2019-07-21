@@ -243,7 +243,7 @@ class MonsterData {
     getXML = (indentation = '\t') => {
         var fileXMLString = '';
         
-        fileXMLString += '\n' + '<monster name="' + this.getName() + '" nameDescription="' + this.getNameDescription() +
+        fileXMLString += '\n<monster name="' + this.getName() + '" nameDescription="' + this.getNameDescription() +
         '" race="' + this.getRace() + '" experience="' + this.getExperience() + '" skull="' + this.getSkull() +
         '" speed="' + this.getSpeed() + '" manacost="' + this.getManaCost() + '">';
         

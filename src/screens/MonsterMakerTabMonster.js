@@ -1,8 +1,7 @@
 import React from 'react';
 
-import MonsterMakerLabel from './MonsterMakerLabel.js';
-import MonsterMakerInput from './MonsterMakerInput.js';
-import MonsterMakerInputSelect from './MonsterMakerInputSelect.js';
+import { raceSelect, skullSelect } from '../consts'
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect} from '../components';
 
 const tabStyle = {
   padding: '15px 15px 10px 15px',
@@ -11,9 +10,6 @@ const tabStyle = {
   backgroundColor: 'rgba(255, 255, 255, 0.6)',
   borderRadius: 25
 }
-
-var raceSelect = ["blood", "venom", "undead", "fire", "energy"];
-var skullSelect = ["none", "yellow", "black", "red", "white", "orange", "green"];
 
 class MonsterMakerTabMonster extends React.Component {
   constructor(props) {

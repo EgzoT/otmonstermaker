@@ -231,79 +231,79 @@ class ImmunitiesData {
     }
 
     loadXMLVariableImmunity = (variableName, variableValue) => {
-        if (variableName == 'holy') {
+        if (variableName === 'holy') {
             if (variableValue === '1') {
                 this.setHoly(true);
             } else {
                 this.setHoly(false);
             }
-        } else if (variableName == 'death') {
+        } else if (variableName === 'death') {
             if (variableValue === '1') {
                 this.setDeath(true);
             } else {
                 this.setDeath(false);
             }
-        } else if (variableName == 'ice') {
+        } else if (variableName === 'ice') {
             if (variableValue === '1') {
                 this.setIce(true);
             } else {
                 this.setIce(false);
             }
-        } else if (variableName == 'fire') {
+        } else if (variableName === 'fire') {
             if (variableValue === '1') {
                 this.setFire(true);
             } else {
                 this.setFire(false);
             }
-        } else if (variableName == 'earth') {
+        } else if (variableName === 'earth') {
             if (variableValue === '1') {
                 this.setEarth(true);
             } else {
                 this.setEarth(false);
             }
-        } else if (variableName == 'energy') {
+        } else if (variableName === 'energy') {
             if (variableValue === '1') {
                 this.setEnergy(true);
             } else {
                 this.setEnergy(false);
             }
-        } else if (variableName == 'physical') {
+        } else if (variableName === 'physical') {
             if (variableValue === '1') {
                 this.setPhysical(true);
             } else {
                 this.setPhysical(false);
             }
-        } else if (variableName == 'lifedrain') {
+        } else if (variableName === 'lifedrain') {
             if (variableValue === '1') {
                 this.setLifeDrain(true);
             } else {
                 this.setLifeDrain(false);
             }
-        } else if (variableName == 'drown') {
+        } else if (variableName === 'drown') {
             if (variableValue === '1') {
                 this.setDrown(true);
             } else {
                 this.setDrown(false);
             }
-        } else if (variableName == 'paralyze') {
+        } else if (variableName === 'paralyze') {
             if (variableValue === '1') {
                 this.setParalyze(true);
             } else {
                 this.setParalyze(false);
             }
-        } else if (variableName == 'drunk') {
+        } else if (variableName === 'drunk') {
             if (variableValue === '1') {
                 this.setDrunk(true);
             } else {
                 this.setDrunk(false);
             }
-        } else if (variableName == 'invisible') {
+        } else if (variableName === 'invisible') {
             if (variableValue === '1') {
                 this.setInvisible(true);
             } else {
                 this.setInvisible(false);
             }
-        } else if (variableName == 'outfit') {
+        } else if (variableName === 'outfit') {
             if (variableValue === '1') {
                 this.setOutfit(true);
             } else {

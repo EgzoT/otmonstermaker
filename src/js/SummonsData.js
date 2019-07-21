@@ -160,7 +160,7 @@ class SummonsData {
 
         if (allXMLsummons.length > 0) {
             fileXMLString += '\n' + indentation + '<summons maxSummons="' + this.getMaxSummons() + '">';
-            allXMLsummons.map((variable, index) => {
+            allXMLsummons.forEach((variable, index) => {
                 fileXMLString += '\n' + variable;
             });
             fileXMLString += '\n' + indentation + '</summons>';
