@@ -2,14 +2,6 @@ import React from 'react';
 
 import { MonsterMakerLabel, MonsterMakerInput} from '../components';
 
-const tabStyle = {
-  padding: '15px 15px 10px 15px',
-  width: 'fit-content',
-  margin: '0px auto 0px auto',
-  backgroundColor: 'rgba(255, 255, 255, 0.6)',
-  borderRadius: 25
-}
-
 class MonsterMakerTabScript extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +22,7 @@ class MonsterMakerTabScript extends React.Component {
 
   render() {
     return (
-      <div style={tabStyle}>
+      <div class="tabMenu">
         <table>
           <tbody>
             <tr>
