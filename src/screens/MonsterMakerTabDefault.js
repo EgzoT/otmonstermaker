@@ -10,7 +10,7 @@ const monsterMakerDefaultH1 = {
 class MonsterMakerTabDefault extends React.Component {
   render() {
     return (
-      <div class="tabMenu">
+      <div className="tabMenu">
         <h1 style={monsterMakerDefaultH1} >Monster maker tool prepared for TFS 1.3</h1>
       </div>
     );

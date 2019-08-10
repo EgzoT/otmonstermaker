@@ -2,7 +2,7 @@ import React from 'react';
 
 const containerStyle = {
     maxHeight: 250,
-    width: '100%',
+    maxWidth: 'calc(100vw - 40px)',
     margin: 5,
     overflow: 'auto',
 

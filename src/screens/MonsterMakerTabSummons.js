@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+
+const firstLabelWidth = { minWidth: 150 }
 
 class MonsterMakerTabSummons extends React.Component {
   constructor(props) {
@@ -95,25 +98,25 @@ class MonsterMakerTabSummons extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Max summons" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.maxSummons }
-                  min="0"
-                  max="100"
-                  onChange={ this.onChangeMaxSummons }
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Max summons"
+              tooltip="How many summons can your monster have in total."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.maxSummons }
+              min="0"
+              max="100"
+              onChange={ this.onChangeMaxSummons }
+            />
+          </li>
+        </ul>
         <MonsterMakerItemsTable
           data = { this.props.appData.getSummons().getAllXMLSummons() }
           changeActiveItem = { this.setActiveItem }
@@ -131,63 +134,75 @@ class MonsterMakerTabSummons extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Summon name" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  value={ this.state.summonName }
-                  onChange={ this.onChangeSummonName }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Interval" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.interval }
-                  min="1000"
-                  onChange={ this.onChangeInterval }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Chance" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.chance }
-                  min="1"
-                  max="100"
-                  onChange={ this.onChangeChance }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Max" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.max }
-                  min="1"
-                  max="100"
-                  onChange={ this.onChangeMax }
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Summon name"
+              tooltip="Put name of the monster you want to be summoned by your creature."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              value={ this.state.summonName }
+              onChange={ this.onChangeSummonName }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Interval"
+              tooltip="How often monster will be summon."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.interval }
+              min="1000"
+              onChange={ this.onChangeInterval }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Chance"
+              tooltip="Chance to summon successfully (in %)."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.chance }
+              min="1"
+              max="100"
+              onChange={ this.onChangeChance }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Max"
+              tooltip="How much of each kind of summons it can have at max."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.max }
+              min="1"
+              max="100"
+              onChange={ this.onChangeMax }
+            />
+          </li>
+        </ul>
       </div>
     );
   }

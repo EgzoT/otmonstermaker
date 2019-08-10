@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput} from '../components';
 
@@ -57,194 +58,194 @@ class MonsterMakerTabImmunities extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
-        <MonsterMakerLabel text="Immunities" />
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={this.onChangeHoly}
-                  defaultChecked={ this.props.appData.getImmunities().getHoly() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Holy"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeDeath }
-                  defaultChecked={ this.props.appData.getImmunities().getDeath() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Death"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeIce }
-                  defaultChecked={ this.props.appData.getImmunities().getIce() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Ice"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeFire }
-                  defaultChecked={ this.props.appData.getImmunities().getFire() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Fire"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeEarth }
-                  defaultChecked={ this.props.appData.getImmunities().getEarth() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Earth"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeEnergy }
-                  defaultChecked={ this.props.appData.getImmunities().getEnergy() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Energy"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangePhysical }
-                  defaultChecked={ this.props.appData.getImmunities().getPhysical() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Physical"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeLifeDrain }
-                  defaultChecked={ this.props.appData.getImmunities().getLifeDrain() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Life Drain"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeDrown }
-                  defaultChecked={ this.props.appData.getImmunities().getDrown() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Drown"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeParalyze }
-                  defaultChecked={ this.props.appData.getImmunities().getParalyze() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Paralyze"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeDrunk }
-                  defaultChecked={ this.props.appData.getImmunities().getDrunk() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Drunk"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeInvisible }
-                  defaultChecked={ this.props.appData.getImmunities().getInvisible() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Invisible"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  onChange={ this.onChangeOutfit }
-                  defaultChecked={ this.props.appData.getImmunities().getOutfit() }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Outfit"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <MonsterMakerLabel
+          text="Immunities"
+          tooltip="Select to set immunities."
+        />
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={this.onChangeHoly}
+              defaultChecked={ this.props.appData.getImmunities().getHoly() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Holy"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeDeath }
+              defaultChecked={ this.props.appData.getImmunities().getDeath() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Death"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeIce }
+              defaultChecked={ this.props.appData.getImmunities().getIce() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Ice"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeFire }
+              defaultChecked={ this.props.appData.getImmunities().getFire() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Fire"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeEarth }
+              defaultChecked={ this.props.appData.getImmunities().getEarth() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Earth"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeEnergy }
+              defaultChecked={ this.props.appData.getImmunities().getEnergy() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Energy"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangePhysical }
+              defaultChecked={ this.props.appData.getImmunities().getPhysical() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Physical"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeLifeDrain }
+              defaultChecked={ this.props.appData.getImmunities().getLifeDrain() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Life Drain"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeDrown }
+              defaultChecked={ this.props.appData.getImmunities().getDrown() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Drown"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeParalyze }
+              defaultChecked={ this.props.appData.getImmunities().getParalyze() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Paralyze"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeDrunk }
+              defaultChecked={ this.props.appData.getImmunities().getDrunk() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Drunk"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeInvisible }
+              defaultChecked={ this.props.appData.getImmunities().getInvisible() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Invisible"
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              onChange={ this.onChangeOutfit }
+              defaultChecked={ this.props.appData.getImmunities().getOutfit() }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Outfit"
+            />
+          </li>
+        </ul>
       </div>
     );
   }

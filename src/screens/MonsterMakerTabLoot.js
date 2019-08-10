@@ -1,7 +1,11 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { subtype } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+
+const firstLabelWidth = { minWidth: 200 }
+const secondLabelWidth = { minWidth: 181 }
 
 class MonsterMakerTabLoot extends React.Component {
   constructor(props) {
@@ -209,7 +213,8 @@ class MonsterMakerTabLoot extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
         <MonsterMakerItemsTable
           data = { this.props.appData.getLoot().getAllXMLLoot() }
           changeActiveItem = { this.setActiveItem }
@@ -227,232 +232,219 @@ class MonsterMakerTabLoot extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Id" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.id }
-                  min="1"
-                  max="100000"
-                  onChange={ this.onChangeId }
-                  disabled={ this.state.nameCheckbox }
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  checked={ this.state.nameCheckbox }
-                  onChange={ this.onChangeNameCheckbox }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Name"
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  value={ this.state.name }
-                  onChange={ this.onChangeName }
-                  disabled={ !this.state.nameCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Chance" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.chance }
-                  min="1"
-                  onChange={ this.onChangeChance }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.countMaxCheckbox }
-                          onChange={ this.onChangeCountMaxCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Count Max" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.countMax }
-                  min="1"
-                  max="10000000"
-                  onChange={ this.onChangeCountMax }
-                  disabled={ !this.state.countMaxCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.subtypeCheckbox }
-                          onChange={ this.onChangeSubtypeCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Subtype" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                  selectItems={ subtype }
-                  value={ this.state.subtype }
-                  onChange={ this.onChangeSubtype }
-                  disabled={ !this.state.subtypeCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.actionIdCheckbox }
-                          onChange={ this.onChangeActionIdCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Action Id" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.actionId }
-                  min="0"
-                  max="10000000"
-                  onChange={ this.onChangeActionId }
-                  disabled={ !this.state.actionIdCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.uniqueIdCheckbox }
-                          onChange={ this.onChangeUniqueIdCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Unique Id" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.uniqueId }
-                  min="0"
-                  max="10000000"
-                  onChange={ this.onChangeUniqueId }
-                  disabled={ !this.state.uniqueIdCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.textCheckbox }
-                          onChange={ this.onChangeTextCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Text" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  value={ this.state.text }
-                  onChange={ this.onChangeText }
-                  disabled={ !this.state.textCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.commentCheckbox }
-                          onChange={ this.onChangeCommentCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Comment" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  value={ this.state.comment }
-                  onChange={ this.onChangeComment }
-                  disabled={ !this.state.commentCheckbox }
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Id"
+              tooltip="Put itemid of item you want to being dropped by creature."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.id }
+              min="1"
+              max="100000"
+              onChange={ this.onChangeId }
+              disabled={ this.state.nameCheckbox }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.nameCheckbox }
+              onChange={ this.onChangeNameCheckbox }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Name"
+              tooltip="Put name of item you want to being dropped by creature."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              value={ this.state.name }
+              onChange={ this.onChangeName }
+              disabled={ !this.state.nameCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Chance"
+              tooltip="Put chance for item to being dropped.<br>chance='1' - 0.001%<br>chance='10' - 0.01%<br>chance='100' - 0.1%<br>chance='1000' - 1%<br>chance='10000' - 10%<br>chance='100000' - 100%<br>chance='5423' - 5.432%<br>chance='75826' - 75.826%"
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.chance }
+              min="1"
+              onChange={ this.onChangeChance }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.countMaxCheckbox }
+              onChange={ this.onChangeCountMaxCheckbox }
+              tooltip="Put maximum value of dropped items (only stackable items) it varies from 1 to whatever you want."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Count Max"
+              tooltip="Put maximum value of dropped items (only stackable items) it varies from 1 to whatever you want."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.countMax }
+              min="1"
+              max="10000000"
+              onChange={ this.onChangeCountMax }
+              disabled={ !this.state.countMaxCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.subtypeCheckbox }
+              onChange={ this.onChangeSubtypeCheckbox }
+              tooltip="It stands for fluid type in any fluid container."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Subtype"
+              tooltip="It stands for fluid type in any fluid container."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInputSelect
+              selectItems={ subtype }
+              value={ this.state.subtype }
+              onChange={ this.onChangeSubtype }
+              disabled={ !this.state.subtypeCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.actionIdCheckbox }
+              onChange={ this.onChangeActionIdCheckbox }
+              tooltip="Add actionId to a certain item when dropped."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Action Id"
+              tooltip="Add actionId to a certain item when dropped."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.actionId }
+              min="0"
+              max="10000000"
+              onChange={ this.onChangeActionId }
+              disabled={ !this.state.actionIdCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.uniqueIdCheckbox }
+              onChange={ this.onChangeUniqueIdCheckbox }
+              tooltip="Add uniqueId to a certain item when dropped."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Unique Id"
+              tooltip="Add uniqueId to a certain item when dropped."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.uniqueId }
+              min="0"
+              max="10000000"
+              onChange={ this.onChangeUniqueId }
+              disabled={ !this.state.uniqueIdCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.textCheckbox }
+              onChange={ this.onChangeTextCheckbox }
+              tooltip="Add text to all writeable items."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Text"
+              tooltip="Add text to all writeable items."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              value={ this.state.text }
+              onChange={ this.onChangeText }
+              disabled={ !this.state.textCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.commentCheckbox }
+              onChange={ this.onChangeCommentCheckbox }
+              tooltip="You may add comment for example to describe loot item name."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Comment"
+              tooltip="You may add comment for example to describe loot item name."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              value={ this.state.comment }
+              onChange={ this.onChangeComment }
+              disabled={ !this.state.commentCheckbox }
+            />
+          </li>
+        </ul>
       </div>
     );
   }

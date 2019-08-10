@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { raceSelect, skullSelect } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect} from '../components';
+
+const firstLabelWidth = { minWidth: 200 }
 
 class MonsterMakerTabMonster extends React.Component {
   constructor(props) {
@@ -108,288 +111,354 @@ class MonsterMakerTabMonster extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Monster name:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  defaultValue={this.props.appData.getMonster().getName()}
-                  onChange={this.onChangeName}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Name description:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  defaultValue={this.props.appData.getMonster().getNameDescription()}
-                  onChange={this.onChangeNameDescription}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Race:" />
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                  selectItems={raceSelect}
-                  defaultValue={this.props.appData.getMonster().getRace()}
-                  onChange={this.onChangeRace}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Experience:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getExperience()}
-                  onChange={this.onChangeExperience}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Skull:" />
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                  selectItems={skullSelect}
-                  defaultValue={this.props.appData.getMonster().getSkull()}
-                  onChange={this.onChangeSkull}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Speed:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getSpeed()}
-                  onChange={this.onChangeSpeed}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Mana cost:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getManaCost()}
-                  onChange={this.onChangeManaCost}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-                <td>
-                  <MonsterMakerLabel text="Health:" />
-                </td>
-                <td>
-                  <MonsterMakerLabel text="Now:" />
-                </td>
-                <td>
-                  <MonsterMakerInput
-                    type="number"
-                    min="0"
-                    defaultValue={this.props.appData.getMonster().getHealthNow()}
-                    onChange={this.onChangeHealthNow}
-                  />
-                </td>
-                <td>
-                  <MonsterMakerLabel text="Max:" />
-                </td>
-                <td>
-                  <MonsterMakerInput
-                    type="number"
-                    min="0"
-                    defaultValue={this.props.appData.getMonster().getHealthMax()}
-                    onChange={this.onChangeHealthMax}
-                  />
-                </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="radio"
-                  onChange={this.onChangeLookType}
-                  value="0"
-                  checked={this.props.appData.getMonster().getLookType() === "0"}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Look Type" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="radio"
-                  onChange={this.onChangeLookType}
-                  value="1"
-                  checked={this.props.appData.getMonster().getLookType() === "1"}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Look TypeEx" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="1"
-                  defaultValue={this.props.appData.getMonster().getLookTypeValue()}
-                  onChange={this.onChangeLookTypeValue}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Head:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  max="132"
-                  defaultValue={this.props.appData.getMonster().getHead()}
-                  onChange={this.onChangeHead}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Body:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  max="132"
-                  defaultValue={this.props.appData.getMonster().getBody()}
-                  onChange={this.onChangeBody}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Legs:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  max="132"
-                  defaultValue={this.props.appData.getMonster().getLegs()}
-                  onChange={this.onChangeLegs}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Feet:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  max="132"
-                  defaultValue={this.props.appData.getMonster().getFeet()}
-                  onChange={this.onChangeFeet}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Addons:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  max="3"
-                  defaultValue={this.props.appData.getMonster().getAddons()}
-                  onChange={this.onChangeAddons}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Mount:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getMount()}
-                  onChange={this.onChangeMount}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Corpse:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getCorpse()}
-                  onChange={this.onChangeCorpse}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Targetchange:" />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Interval:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getTargetchangeInterval()}
-                  onChange={this.onChangeTargetchangeInterval}
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Chance:" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  min="0"
-                  defaultValue={this.props.appData.getMonster().getTargetchangeChance()}
-                  onChange={this.onChangeTargetchangeChance}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Monster name:"
+              tooltip="Put your monster name."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              defaultValue={this.props.appData.getMonster().getName()}
+              onChange={this.onChangeName}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Name description:"
+              tooltip="Put description of your monster.<br>Example:<br>'A demon loses 5 hitpoints due to an attack by a test.'<br>'a test' is name description."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              defaultValue={this.props.appData.getMonster().getNameDescription()}
+              onChange={this.onChangeNameDescription}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Race:"
+              tooltip="Choose race for monster."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInputSelect
+              selectItems={raceSelect}
+              defaultValue={this.props.appData.getMonster().getRace()}
+              onChange={this.onChangeRace}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Experience:"
+              tooltip="Choose how many experience points gain player for kill monster."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getExperience()}
+              onChange={this.onChangeExperience}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Skull:"
+              tooltip="Choose skulls type for your monster to have.<br>Set 'none' to don't set skull."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInputSelect
+              selectItems={skullSelect}
+              defaultValue={this.props.appData.getMonster().getSkull()}
+              onChange={this.onChangeSkull}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Speed:"
+              tooltip="Choose speed for your monster.<br>Set it to '0' means your monster won't move at all."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getSpeed()}
+              onChange={this.onChangeSpeed}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Mana cost:"
+              tooltip="You can configure mana cost needed for the summon of this monster.<br>You need to turn on flag 'summonable' or 'convinceable'."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getManaCost()}
+              onChange={this.onChangeManaCost}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Health:"
+              tooltip="Set health points for your monster."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Now:"
+              tooltip="How much health points will have monster when he spawned."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getHealthNow()}
+              onChange={this.onChangeHealthNow}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Max:"
+              tooltip="Maximum health points of monster.<br>This value needs to be equal or greater than in 'Now'."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getHealthMax()}
+              onChange={this.onChangeHealthMax}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', padding: 5, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="radio"
+              onChange={this.onChangeLookType}
+              value="0"
+              checked={this.props.appData.getMonster().getLookType() === "0"}
+              tooltip="This is where you set up outfit of your monster."
+            />
+          </li>
+          <li style={{float: 'left', padding: 0, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Look Type"
+              tooltip="This is where you set up outfit of your monster."
+            />
+          </li>
+          <li style={{float: 'left', padding: 5, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="radio"
+              onChange={this.onChangeLookType}
+              value="1"
+              checked={this.props.appData.getMonster().getLookType() === "1"}
+              tooltip="This is where you set up outfit from item id for your monster.<br>For example for id '3031', your monster look like 'Gold Coin'."
+            />
+          </li>
+          <li style={{float: 'left', padding: 0, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+                text="Look TypeEx"
+                tooltip="This is where you set up outfit from item id for your monster.<br>For example for id '3031', your monster look like 'Gold Coin'."
+              />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="1"
+              defaultValue={this.props.appData.getMonster().getLookTypeValue()}
+              onChange={this.onChangeLookTypeValue}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Head:"
+              tooltip="Choose color id for head.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              max="132"
+              defaultValue={this.props.appData.getMonster().getHead()}
+              onChange={this.onChangeHead}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Body:"
+              tooltip="Choose color id for body.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              max="132"
+              defaultValue={this.props.appData.getMonster().getBody()}
+              onChange={this.onChangeBody}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Legs:"
+              tooltip="Choose color id for legs.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              max="132"
+              defaultValue={this.props.appData.getMonster().getLegs()}
+              onChange={this.onChangeLegs}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Feet:"
+              tooltip="Choose color id for feet.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              max="132"
+              defaultValue={this.props.appData.getMonster().getFeet()}
+              onChange={this.onChangeFeet}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Addons:"
+              tooltip="You can type addons for your monster.<br>'0' means no addons, '1' means first addon, '2' means second addon, '3' means both addons.<br>Works only if monster has outfit which can be edited with addons."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              max="3"
+              defaultValue={this.props.appData.getMonster().getAddons()}
+              onChange={this.onChangeAddons}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Mount:"
+              tooltip="You can type mount for your creature.<br>Type mount='0' if you don't want your monster to have any mounts."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getMount()}
+              onChange={this.onChangeMount}
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Corpse:"
+              tooltip="Set monster corpse<br>If you want your monster to have any loot, set only containers."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getCorpse()}
+              onChange={this.onChangeCorpse}
+            />
+          </li>
+        </ul>
+        {/*TODO*/}
+        {/*<ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            {label}
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            {input}
+          </li>
+        </ul>*/}
+        {/*TODO*/}
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Targetchange:"
+              tooltip="You can set up monster retarget."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Interval:"
+              tooltip="How often it will try to change it\'s target (in milliseconds)."                  
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getTargetchangeInterval()}
+              onChange={this.onChangeTargetchangeInterval}
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Chance:"
+              tooltip="It's the chance to retarget successfully.<br>Put '0' if you don't want your monster to retarget at all."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              min="0"
+              defaultValue={this.props.appData.getMonster().getTargetchangeChance()}
+              onChange={this.onChangeTargetchangeChance}
+            />
+          </li>
+        </ul>
         <table>
           <tbody>
             <tr>
@@ -398,10 +467,14 @@ class MonsterMakerTabMonster extends React.Component {
                   type="checkbox"
                   onChange={this.onChangeStrategy}
                   defaultChecked={this.props.appData.getMonster().getStrategy()}
+                  tooltip="This is responsible for monster behavior."
                 />
               </td>
               <td>
-                <MonsterMakerLabel text="Strategy" />
+                <MonsterMakerLabel
+                  text="Strategy"
+                  tooltip="This is responsible for monster behavior."
+                />
               </td>
             </tr>
           </tbody>
@@ -414,11 +487,13 @@ class MonsterMakerTabMonster extends React.Component {
                   text={"Attack: " + this.state.strategyValue}
                   style={{float: "left"}}
                   disabled={!this.props.appData.getMonster().getStrategy()}
+                  tooltip="If more, there is more focused on attack."
                 />
                 <MonsterMakerLabel
                   text={"Defense: " + (100 - this.state.strategyValue)}
                   style={{float: "right"}}
                   disabled={!this.props.appData.getMonster().getStrategy()}
+                  tooltip="If more, there is more focused on defence."
                 />
               </td>
             </tr>

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip'
+//import ReactTooltip from 'react-tooltip';
 
 const buttonStyle = {
   width: 40,
@@ -45,9 +45,14 @@ class MonsterMakerButton extends React.Component {
   
   render() {
     return (
-      <button style={ !this.state.hover ? buttonStyle : buttonStyleHover } onMouseEnter={ this.toggleHover } onMouseLeave={ this.toggleHover } onClick={ this.props.onClick } data-tip={ this.props.tooltip } >
+      <button style={ !this.state.hover ? buttonStyle : buttonStyleHover }
+              onMouseEnter={ this.toggleHover }
+              onMouseLeave={ this.toggleHover }
+              onClick={ this.props.onClick }
+              data-tip={ this.props.tooltip }
+      >
         <i className={ "ra " + this.props.icon } style={ iconStyle } ></i>
-        <ReactTooltip place="bottom" type="dark" effect="float"/>
+        {/*<ReactTooltip place="bottom" type="dark" effect="float"/>*/}
       </button>
     );
   }

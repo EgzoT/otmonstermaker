@@ -1,6 +1,11 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
+
 import { areaEffect, shotEffect } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+
+const firstLabelWidth = { minWidth: 200 }
+const secondLabelWidth = { minWidth: 180 }
 
 class MonsterMakerTabAttacks extends React.Component {
   constructor(props) {
@@ -331,7 +336,8 @@ class MonsterMakerTabAttacks extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
         <MonsterMakerItemsTable
           data = { this.props.appData.getAttacks().getAllXMLattacks() }
           changeActiveItem = { this.setActiveItem }
@@ -349,413 +355,387 @@ class MonsterMakerTabAttacks extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Name" />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Type:" />
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                  selectItems={ this.props.appData.getAttacks().getAttackTypeArray() }
-                  value={ this.state.attackType }
-                  onChange={ this.onChangeAttackType }
-                />
-              </td>
-              <td>
-                {
-                  this.state.attackType === "elemental" ?
-                  <MonsterMakerInputSelect
-                    selectItems={ this.props.appData.getAttacks().getElementalTypeArray() }
-                    value={ this.state.elementalType }
-                    onChange={ this.onChangeElementalType }
-                  /> : null
-                }
-                {
-                  this.state.attackType === "conditions" ?
-                  <MonsterMakerInputSelect
-                    selectItems={ this.props.appData.getAttacks().getConditionsTypeArray() }
-                    value={ this.state.conditionsType }
-                    onChange={ this.onChangeConditionsType }
-                  /> : null
-                }
-                {
-                  this.state.attackType === "fields" ?
-                  <MonsterMakerInputSelect
-                    selectItems={ this.props.appData.getAttacks().getFieldsTypeArray() }
-                    value={ this.state.fieldsType }
-                    onChange={ this.onChangeFieldsType }
-                  /> : null
-                }
-                {
-                  this.state.attackType === "runes" ?
-                  <MonsterMakerInputSelect
-                    selectItems={ this.props.appData.getAttacks().getRunesTypeArray() }
-                    value={ this.state.runesType }
-                    onChange={ this.onChangeRunesType }
-                  /> : null
-                }
-                {
-                  this.state.attackType === "spells" ?
-                  <MonsterMakerInputSelect
-                    selectItems={ this.props.appData.getAttacks().getSpellsTypeArray() }
-                    value={ this.state.spellsType }
-                    onChange={ this.onChangeSpellsType }
-                  /> : null
-                }
-                {
-                  this.state.attackType === "other" ?
-                  <MonsterMakerInput
-                    type="text"
-                    value={ this.state.otherType }
-                    onChange={ this.onChangeOtherType }
-                  /> : null
-                }
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel
-                  text="Min"
-                  disabled={ this.state.skillChange && this.state.attackType === "melee" }
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.min }
-                  onChange={ this.onChangeMin }
-                  disabled={ this.state.skillChange && this.state.attackType === "melee" }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Max"
-                  disabled={ this.state.skillChange && this.state.attackType === "melee" }
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.max }
-                  onChange={ this.onChangeMax }
-                  disabled={ this.state.skillChange && this.state.attackType === "melee" }
-                />
-              </td>
-              {
-                this.state.attackType === "melee" ?
-                <td>
-                  <MonsterMakerInput
-                    type="checkbox"
-                    value={ this.state.skillChange }
-                    onChange={ this.onChangeSkillCheckbox }
-                  />
-                </td> : null
-              }
-              {
-                this.state.attackType === "melee" ?
-                <td>
-                  <MonsterMakerLabel
-                    text="Skill"
-                  />
-                </td> : null
-              }
-              {
-                this.state.attackType === "melee" ?
-                <td>
-                  <MonsterMakerInput
-                    type="number"
-                    value={ this.state.skill }
-                    onChange={ this.onChangeSkill }
-                    disabled={ !this.state.skillChange }
-                  />
-                </td> : null
-              }
-              {
-                this.state.attackType === "melee" ?
-                <td>
-                  <MonsterMakerLabel
-                    text="Attack"
-                    disabled={ !this.state.skillChange }
-                  />
-                </td> : null
-              }
-              {
-                this.state.attackType === "melee" ?
-                <td>
-                  <MonsterMakerInput
-                    type="number"
-                    value={ this.state.attack }
-                    onChange={ this.onChangeAttack }
-                    disabled={ !this.state.skillChange }
-                  />
-                </td> : null
-              }
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Interval" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.interval }
-                  min="1000"
-                  onChange={ this.onChangeInterval }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Chance" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.chance }
-                  min="1"
-                  onChange={ this.onChangeChance }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.lengthCheckbox }
-                          onChange={ this.onChangeLengthCheckbox }
-                          disabled={ this.state.radiusCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel
-                          text="Length"
-                          disabled={ this.state.radiusCheckbox }
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.length }
-                  min="0"
-                  max="11"
-                  onChange={ this.onChangeLength }
-                  disabled={ !this.state.lengthCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.spreadCheckbox }
-                          onChange={ this.onChangeSpreadCheckbox }
-                          disabled={ this.state.radiusCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel
-                          text="Spread"
-                          disabled={ this.state.radiusCheckbox }
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.spread }
-                  min="0"
-                  max="3"
-                  onChange={ this.onChangeSpread }
-                  disabled={ !this.state.spreadCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.radiusCheckbox }
-                          onChange={ this.onChangeRadiusCheckbox }
-                          disabled={ this.state.lengthCheckbox || this.state.spreadCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel
-                          text="Radius"
-                          disabled={ this.state.lengthCheckbox || this.state.spreadCheckbox}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.radius }
-                  min="1"
-                  max="9"
-                  onChange={ this.onChangeRadius }
-                  disabled={ !this.state.radiusCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.poisonCheckbox }
-                          onChange={ this.onChangePoisonCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Poison" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.poison }
-                  min="1"
-                  onChange={ this.onChangePoison }
-                  disabled={ !this.state.poisonCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.target }
-                          onChange={ this.onChangeTarget }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Target" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerLabel
-                  text="Range"
-                  disabled={ !this.state.target }
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.range }
-                  min="1"
-                  max="12"
-                  onChange={ this.onChangeRange }
-                  disabled={ !this.state.target }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.areaeffectCheckbox }
-                          onChange={ this.onChangeAreaeffectCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Area Effect" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                    selectItems={ areaEffect }
-                    value={ this.state.areaeffect }
-                    onChange={ this.onChangeAreaeffect }
-                    disabled={ !this.state.areaeffectCheckbox }
-                  />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.shooteffectCheckbox }
-                          onChange={ this.onChangeShooteffectCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Shoot Effect" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInputSelect
-                    selectItems={ shotEffect }
-                    value={ this.state.shooteffect }
-                    onChange={ this.onChangeShooteffect }
-                    disabled={ !this.state.shooteffectCheckbox }
-                  />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Name"
+              tooltip="There you can use various attacks like 'melee'.<br>It includes also spell names like:"
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel text="Type:" />
+          </li>
+          <td>
+            <MonsterMakerInputSelect
+              selectItems={ this.props.appData.getAttacks().getAttackTypeArray() }
+              value={ this.state.attackType }
+              onChange={ this.onChangeAttackType }
+            />
+          </td>
+          <td>
+            {
+              this.state.attackType === "elemental" ?
+              <MonsterMakerInputSelect
+                selectItems={ this.props.appData.getAttacks().getElementalTypeArray() }
+                value={ this.state.elementalType }
+                onChange={ this.onChangeElementalType }
+              /> : null
+            }
+            {
+              this.state.attackType === "conditions" ?
+              <MonsterMakerInputSelect
+                selectItems={ this.props.appData.getAttacks().getConditionsTypeArray() }
+                value={ this.state.conditionsType }
+                onChange={ this.onChangeConditionsType }
+              /> : null
+            }
+            {
+              this.state.attackType === "fields" ?
+              <MonsterMakerInputSelect
+                selectItems={ this.props.appData.getAttacks().getFieldsTypeArray() }
+                value={ this.state.fieldsType }
+                onChange={ this.onChangeFieldsType }
+              /> : null
+            }
+            {
+              this.state.attackType === "runes" ?
+              <MonsterMakerInputSelect
+                selectItems={ this.props.appData.getAttacks().getRunesTypeArray() }
+                value={ this.state.runesType }
+                onChange={ this.onChangeRunesType }
+              /> : null
+            }
+            {
+              this.state.attackType === "spells" ?
+              <MonsterMakerInputSelect
+                selectItems={ this.props.appData.getAttacks().getSpellsTypeArray() }
+                value={ this.state.spellsType }
+                onChange={ this.onChangeSpellsType }
+              /> : null
+            }
+            {
+              this.state.attackType === "other" ?
+              <MonsterMakerInput
+                type="text"
+                value={ this.state.otherType }
+                onChange={ this.onChangeOtherType }
+              /> : null
+            }
+          </td>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Min"
+              disabled={ this.state.skillChange && this.state.attackType === "melee" }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.min }
+              onChange={ this.onChangeMin }
+              disabled={ this.state.skillChange && this.state.attackType === "melee" }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Max"
+              disabled={ this.state.skillChange && this.state.attackType === "melee" }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.max }
+              onChange={ this.onChangeMax }
+              disabled={ this.state.skillChange && this.state.attackType === "melee" }
+            />
+          </li>
+          {
+            this.state.attackType === "melee" ?
+            <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+              <MonsterMakerInput
+                type="checkbox"
+                value={ this.state.skillChange }
+                onChange={ this.onChangeSkillCheckbox }
+              />
+            </li> : null
+          }
+          {
+            this.state.attackType === "melee" ?
+            <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+              <MonsterMakerLabel
+                text="Skill"
+              />
+            </li> : null
+          }
+          {
+            this.state.attackType === "melee" ?
+            <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+              <MonsterMakerInput
+                type="number"
+                value={ this.state.skill }
+                onChange={ this.onChangeSkill }
+                disabled={ !this.state.skillChange }
+              />
+            </li> : null
+          }
+          {
+            this.state.attackType === "melee" ?
+            <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+              <MonsterMakerLabel
+                text="Attack"
+                disabled={ !this.state.skillChange }
+              />
+            </li> : null
+          }
+          {
+            this.state.attackType === "melee" ?
+            <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+              <MonsterMakerInput
+                type="number"
+                value={ this.state.attack }
+                onChange={ this.onChangeAttack }
+                disabled={ !this.state.skillChange }
+              />
+            </li> : null
+          }
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Interval"
+              tooltip="It's how often the spell will be cast - 2000 = 2seconds."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.interval }
+              min="1000"
+              onChange={ this.onChangeInterval }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Chance"
+              tooltip="It's the chance to cast the spell successfully (in %)."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.chance }
+              min="1"
+              onChange={ this.onChangeChance }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.lengthCheckbox }
+              onChange={ this.onChangeLengthCheckbox }
+              disabled={ this.state.radiusCheckbox }
+              tooltip="How long the beam/wave is - remember to set always spread='0'<br>If there is no spread it still will be cast as wave.<br>(So length='x' spread='0')."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Length"
+              disabled={ this.state.radiusCheckbox }
+              tooltip="How long the beam/wave is - remember to set always spread='0'.<br>If there is no spread it still will be cast as wave.<br>(So length='x' spread='0')."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.length }
+              min="0"
+              max="11"
+              onChange={ this.onChangeLength }
+              disabled={ !this.state.lengthCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.spreadCheckbox }
+              onChange={ this.onChangeSpreadCheckbox }
+              disabled={ this.state.radiusCheckbox }
+              tooltip="How big spread is."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Spread"
+              disabled={ this.state.radiusCheckbox }
+              tooltip="How big spread is."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.spread }
+              min="0"
+              max="3"
+              onChange={ this.onChangeSpread }
+              disabled={ !this.state.spreadCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.radiusCheckbox }
+              onChange={ this.onChangeRadiusCheckbox }
+              disabled={ this.state.lengthCheckbox || this.state.spreadCheckbox }
+              tooltip="This is responsible for the size of area.<br>(Radius won't work with spread and length - if there's already length and/or spread do not add radius)."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Radius"
+              disabled={ this.state.lengthCheckbox || this.state.spreadCheckbox}
+              tooltip="This is responsible for the size of area.<br>(Radius won't work with spread and length - if there's already length and/or spread do not add radius)."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.radius }
+              min="1"
+              max="9"
+              onChange={ this.onChangeRadius }
+              disabled={ !this.state.radiusCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.poisonCheckbox }
+              onChange={ this.onChangePoisonCheckbox }
+              tooltip="Makes target poisoned, formula is:<br>Desired damage(for example. 25hp/turn)*20 = 500 so poison='500'."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Poison"
+              tooltip="Makes target poisoned, formula is:<br>Desired damage(for example. 25hp/turn)*20 = 500 so poison='500'."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.poison }
+              min="1"
+              onChange={ this.onChangePoison }
+              disabled={ !this.state.poisonCheckbox }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.target }
+              onChange={ this.onChangeTarget }
+              tooltip="Checked target - spell cast on monster itself.<br>Unchecked target - spell cast on target."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Target"
+              tooltip="Checked target - spell cast on monster itself.<br>Unchecked target - spell cast on target."
+              width={ secondLabelWidth }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Range"
+              disabled={ !this.state.target }
+              tooltip="Means how far your monster can shoot a ranged spell."
+              width={ firstLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.range }
+              min="1"
+              max="12"
+              onChange={ this.onChangeRange }
+              disabled={ !this.state.target }
+            />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.areaeffectCheckbox }
+              onChange={ this.onChangeAreaeffectCheckbox }
+              tooltip="There you can add various areaEffects for the spell."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Area Effect"
+              tooltip="There you can add various areaEffects for the spell."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInputSelect
+                selectItems={ areaEffect }
+                value={ this.state.areaeffect }
+                onChange={ this.onChangeAreaeffect }
+                disabled={ !this.state.areaeffectCheckbox }
+              />
+          </li>
+        </ul>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.shooteffectCheckbox }
+              onChange={ this.onChangeShooteffectCheckbox }
+              tooltip="There you can add various shootEffect for the spell."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Shoot Effect"
+              tooltip="There you can add various shootEffect for the spell."
+              width={ secondLabelWidth }
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInputSelect
+                selectItems={ shotEffect }
+                value={ this.state.shooteffect }
+                onChange={ this.onChangeShooteffect }
+                disabled={ !this.state.shooteffectCheckbox }
+              />
+          </li>
+        </ul>
       </div>
     );
   }

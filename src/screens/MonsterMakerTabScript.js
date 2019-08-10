@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput} from '../components';
 
@@ -22,7 +23,8 @@ class MonsterMakerTabScript extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
         <table>
           <tbody>
             <tr>
@@ -31,34 +33,35 @@ class MonsterMakerTabScript extends React.Component {
                   type="checkbox"
                   defaultChecked={this.props.appData.getScript().getChecked()}
                   onChange={this.onChangeChecked}
+                  tooltip="Check on to add script."
                 />
               </td>
-              <td>
-                <MonsterMakerLabel text="Script" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table>
-          <tbody>
-            <tr>
               <td>
                 <MonsterMakerLabel
                   text="Script"
-                  disabled={!this.props.appData.getScript().getChecked()}
-                />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  defaultValue={this.props.appData.getScript().getScript()}
-                  onChange={this.onChangeScript}
-                  disabled={!this.props.appData.getScript().getChecked()}
+                  tooltip="Check on to add script."
                 />
               </td>
             </tr>
           </tbody>
         </table>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Script"
+              disabled={!this.props.appData.getScript().getChecked()}
+              tooltip="There you can use creaturescripts made for certain monsters.<br>You put this tag between flags and attacks."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              defaultValue={this.props.appData.getScript().getScript()}
+              onChange={this.onChangeScript}
+              disabled={!this.props.appData.getScript().getChecked()}
+            />
+          </li>
+        </ul>
       </div>
     );
   }

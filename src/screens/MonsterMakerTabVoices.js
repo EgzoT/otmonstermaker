@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
 
@@ -81,36 +82,39 @@ class MonsterMakerTabVoices extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="Interval" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.interval }
-                  min="1000"
-                  onChange={ this.onChangeInterval }
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel text="Chance" />
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="number"
-                  value={ this.state.chance }
-                  min="1"
-                  max="100"
-                  onChange={ this.onChangeChance }
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Interval"
+              tooltip="How often monster will be speak."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.interval }
+              min="1000"
+              onChange={ this.onChangeInterval }
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Chance"
+              tooltip="Chance to speak successfully (in %)."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="number"
+              value={ this.state.chance }
+              min="1"
+              max="100"
+              onChange={ this.onChangeChance }
+            />
+          </li>
+        </ul>
         <MonsterMakerItemsTable
           data = { this.props.appData.getVoices().getAllXMLVoices() }
           changeActiveItem = { this.setActiveItem }
@@ -128,7 +132,10 @@ class MonsterMakerTabVoices extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <MonsterMakerLabel text="Sentence" />
+        <MonsterMakerLabel
+          text="Sentence"
+          tooltip="Put any message you want to be spoke by your monster."
+        />
         <MonsterMakerInput
           type="text"
           value={ this.state.sentence }
@@ -142,11 +149,13 @@ class MonsterMakerTabVoices extends React.Component {
                   type="checkbox"
                   checked={ this.state.yell }
                   onChange={ this.onChangeYell }
+                  tooltip="It can be heard in greater distance (including different floors) than normal message."
                 />
               </td>
               <td>
                 <MonsterMakerLabel
                   text="Yell"
+                  tooltip="It can be heard in greater distance (including different floors) than normal message."
                 />
               </td>
             </tr>

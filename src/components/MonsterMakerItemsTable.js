@@ -4,7 +4,8 @@ import MonsterMakerItemsTableTr from './MonsterMakerItemsTableTr.js';
 
 const containerStyle = {
   maxHeight: 250,
-  width: '100%',
+  //width: '100%',
+  maxWidth: "calc(100vw - 40px)",
   padding: 5,
   overflow: 'auto'
 }

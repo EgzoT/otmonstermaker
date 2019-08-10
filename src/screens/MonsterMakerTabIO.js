@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerButton, MonsterMakerCode} from '../components';
 
@@ -81,56 +82,45 @@ class MonsterMakerTabIO extends React.Component {
 
   render() {
     return (
-      <div class="tabMenu">
+      <div className="tabMenu">
+        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
         <MonsterMakerLabel text="Export" />
         <hr/>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerLabel text="File name: " />
-              </td>
-              <td>
-                <MonsterMakerLabel text={ this.state.name + ".xml" } style={{ minWidth: 100, color: 'green' }} />
-              </td>
-              <td>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <MonsterMakerInput
-                          type="checkbox"
-                          checked={ this.state.ownNameCheckbox }
-                          onChange={ this.onChangeOwnNameCheckbox }
-                        />
-                      </td>
-                      <td>
-                        <MonsterMakerLabel text="Own name" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <MonsterMakerInput
-                  type="text"
-                  value={ this.state.ownName }
-                  onChange={ this.onChangeOwnName }
-                  disabled={ !this.state.ownNameCheckbox }
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <MonsterMakerButton
-                  icon = "ra-load"
-                  onClick = { this.downloadFile }
-                  tooltip = "Download file"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel text="File name: " />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel text={ this.state.name + ".xml" } style={{ minWidth: 100, color: 'green' }} />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="checkbox"
+              checked={ this.state.ownNameCheckbox }
+              onChange={ this.onChangeOwnNameCheckbox }
+              tooltip="Set if you want add own name."
+            />
+          </li>
+          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerLabel
+              text="Own name"
+              tooltip="Set if you want add own name."
+            />
+          </li>
+          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+            <MonsterMakerInput
+              type="text"
+              value={ this.state.ownName }
+              onChange={ this.onChangeOwnName }
+              disabled={ !this.state.ownNameCheckbox }
+            />
+          </li>
+        </ul>
+        <MonsterMakerButton
+          icon = "ra-load"
+          onClick = { this.downloadFile }
+          tooltip = "Download file"
+        />
         <MonsterMakerLabel text="Import" />
         <hr/>
         <MonsterMakerInput

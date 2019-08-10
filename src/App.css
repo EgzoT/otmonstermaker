@@ -23,8 +23,9 @@
 
 .tabMenu {
   padding: 15px 15px 10px 15px;
-  width: max-content;
   margin: 0px auto 0px auto;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 25px;
+  width: max-content;
+  max-width: calc(100vw - 48px);
 }
