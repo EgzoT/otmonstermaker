@@ -4,6 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import { raceSelect, skullSelect } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect} from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
+import OTColorInput from '../components/otcolorinput-react/OTColorInput';
 
 const firstLabelWidth = { minWidth: 200 }
 
@@ -58,20 +59,20 @@ class MonsterMakerTabMonster extends React.Component {
     this.props.appData.getMonster().setLookTypeValue(event.target.value);
   }
 
-  onChangeHead = (event) => {
-    this.props.appData.getMonster().setHead(event.target.value);
+  onChangeHead = (colorId) => {
+    this.props.appData.getMonster().setHead(colorId);
   }
 
-  onChangeBody = (event) => {
-    this.props.appData.getMonster().setBody(event.target.value);
+  onChangeBody = (colorId) => {
+    this.props.appData.getMonster().setBody(colorId);
   }
 
-  onChangeLegs = (event) => {
-    this.props.appData.getMonster().setLegs(event.target.value);
+  onChangeLegs = (colorId) => {
+    this.props.appData.getMonster().setLegs(colorId);
   }
 
-  onChangeFeet = (event) => {
-    this.props.appData.getMonster().setFeet(event.target.value);
+  onChangeFeet = (colorId) => {
+    this.props.appData.getMonster().setFeet(colorId);
   }
 
   onChangeAddons = (event) => {
@@ -301,13 +302,10 @@ class MonsterMakerTabMonster extends React.Component {
               tooltip="Choose color id for head.<br>Works only if monster has outfit which can be edited with colors like player outfits."
               style={{ marginLeft: 3, marginRight: 3 }}
             />
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              max="132"
-              defaultValue={ this.props.appData.getMonster().getHead() }
+            <OTColorInput
+              value={ this.props.appData.getMonster().getHead() }
               onChange={ this.onChangeHead }
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ container: { marginLeft: 3, marginRight: 3 } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -316,13 +314,10 @@ class MonsterMakerTabMonster extends React.Component {
               tooltip="Choose color id for body.<br>Works only if monster has outfit which can be edited with colors like player outfits."
               style={{ marginLeft: 3, marginRight: 3 }}
             />
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              max="132"
-              defaultValue={ this.props.appData.getMonster().getBody() }
+            <OTColorInput
+              value={ this.props.appData.getMonster().getBody() }
               onChange={ this.onChangeBody }
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ container: { marginLeft: 3, marginRight: 3 } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -331,13 +326,10 @@ class MonsterMakerTabMonster extends React.Component {
               tooltip="Choose color id for legs.<br>Works only if monster has outfit which can be edited with colors like player outfits."
               style={{ marginLeft: 3, marginRight: 3 }}
             />
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              max="132"
-              defaultValue={ this.props.appData.getMonster().getLegs() }
+            <OTColorInput
+              value={ this.props.appData.getMonster().getLegs() }
               onChange={ this.onChangeLegs }
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ container: { marginLeft: 3, marginRight: 3 } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -346,13 +338,10 @@ class MonsterMakerTabMonster extends React.Component {
               tooltip="Choose color id for feet.<br>Works only if monster has outfit which can be edited with colors like player outfits."
               style={{ marginLeft: 3, marginRight: 3 }}
             />
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              max="132"
-              defaultValue={ this.props.appData.getMonster().getFeet() }
+            <OTColorInput
+              value={ this.props.appData.getMonster().getFeet() }
               onChange={ this.onChangeFeet }
-              style={{ marginLeft: 3, marginRight: 3 }}
+              style={{ container: { marginLeft: 3, marginRight: 3 } }}
             />
           </FlexibleGrid>
         </FlexibleGridContainer>
