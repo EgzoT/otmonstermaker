@@ -4,7 +4,6 @@ import MonsterMakerItemsTableTr from './MonsterMakerItemsTableTr.js';
 
 const containerStyle = {
   maxHeight: 250,
-  //width: '100%',
   maxWidth: "calc(100vw - 40px)",
   padding: 5,
   overflow: 'auto'
@@ -27,6 +26,7 @@ class MonsterMakerItemsTable extends React.Component {
               this.props.data.map((variable, index) => {
                 return (
                   <MonsterMakerItemsTableTr
+                    key={ index }
                     variable = { variable }
                     index = { index }
                     changeActiveItem = { this.props.changeActiveItem }

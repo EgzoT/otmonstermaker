@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 
 class MonsterMakerTabVoices extends React.Component {
   constructor(props) {
@@ -83,38 +84,40 @@ class MonsterMakerTabVoices extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
+        <FlexibleGridContainer>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Interval"
               tooltip="How often monster will be speak."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               value={ this.state.interval }
               min="1000"
               onChange={ this.onChangeInterval }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Chance"
               tooltip="Chance to speak successfully (in %)."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               value={ this.state.chance }
               min="1"
               max="100"
               onChange={ this.onChangeChance }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+
         <MonsterMakerItemsTable
           data = { this.props.appData.getVoices().getAllXMLVoices() }
           changeActiveItem = { this.setActiveItem }
@@ -132,35 +135,32 @@ class MonsterMakerTabVoices extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
+
         <MonsterMakerLabel
           text="Sentence"
           tooltip="Put any message you want to be spoke by your monster."
+          style={{ marginLeft: 3, marginRight: 3 }}
         />
         <MonsterMakerInput
           type="text"
           value={ this.state.sentence }
           onChange={ this.onChangeSentence }
+          style={{ marginLeft: 3, marginRight: 3 }}
         />
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  checked={ this.state.yell }
-                  onChange={ this.onChangeYell }
-                  tooltip="It can be heard in greater distance (including different floors) than normal message."
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Yell"
-                  tooltip="It can be heard in greater distance (including different floors) than normal message."
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <FlexibleGridContainer>
+          <MonsterMakerInput
+            type="checkbox"
+            checked={ this.state.yell }
+            onChange={ this.onChangeYell }
+            tooltip="It can be heard in greater distance (including different floors) than normal message."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerLabel
+            text="Yell"
+            tooltip="It can be heard in greater distance (including different floors) than normal message."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
       </div>
     );
   }

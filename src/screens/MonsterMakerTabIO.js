@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerButton, MonsterMakerCode} from '../components';
+import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 
 class MonsterMakerTabIO extends React.Component {
   constructor(props) {
@@ -83,46 +84,54 @@ class MonsterMakerTabIO extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
         <MonsterMakerLabel text="Export" />
         <hr/>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel text="File name: " />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel text={ this.state.name + ".xml" } style={{ minWidth: 100, color: 'green' }} />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
+
+        <FlexibleGridContainer>
+          <FlexibleGrid>
+            <MonsterMakerLabel
+              text="File name: "
+              style={{ marginLeft: 3, marginRight: 3 }}
+            />
+            <MonsterMakerLabel
+              text={ this.state.name + ".xml" }
+              style={{ minWidth: 100, color: 'green', marginLeft: 3, marginRight: 3 }}
+            />
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerInput
               type="checkbox"
               checked={ this.state.ownNameCheckbox }
               onChange={ this.onChangeOwnNameCheckbox }
               tooltip="Set if you want add own name."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
             <MonsterMakerLabel
               text="Own name"
               tooltip="Set if you want add own name."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="text"
               value={ this.state.ownName }
               onChange={ this.onChangeOwnName }
               disabled={ !this.state.ownNameCheckbox }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+
         <MonsterMakerButton
           icon = "ra-load"
           onClick = { this.downloadFile }
           tooltip = "Download file"
         />
         <MonsterMakerLabel text="Import" />
+
         <hr/>
+
         <MonsterMakerInput
           type="file"
           style={{ margin: 5 }}
@@ -134,12 +143,15 @@ class MonsterMakerTabIO extends React.Component {
           tooltip = "Load file"
         />
         <MonsterMakerLabel text="Other" />
+
         <hr/>
+
         <MonsterMakerButton
           icon = "ra-recycle"
           onClick = { this.setDefaultValue }
           tooltip = "Clear all data"
         />
+
         <MonsterMakerCode text={ this.props.appData.getLineMonstersXML() } />
         <MonsterMakerCode text={ this.props.appData.getXML() } />
       </div>

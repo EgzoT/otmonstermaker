@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput} from '../components';
+import { FlexibleGridContainer } from '../components/FlexibleGrid';
 
 const firstLabelWidth = { minWidth: 120 }
 
@@ -70,272 +71,238 @@ class MonsterMakerTabElements extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
         <MonsterMakerLabel
           text="Elements"
           tooltip="Resistance or weakness to certain elements to your monster.<br>+ Minus values - Means that your monster will be weak to certain element.<br>You can put there any value you want, starting from -1.<br>+ Positive values - Means that your monster will be resistant to certain element.<br>You can put there values starting from 1 ending on 99 (100 would mean full immunity and there's different category).<br>* If you put here 100% resistance to for example fire, you monster yes will be immune to fire but it will also WALK AROUND FIRE FIELDS,<br>not onto them as it's supposed to be and you don't want that to happen."
+          style={{ marginLeft: 3, marginRight: 3 }}
         />
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+        <FlexibleGridContainer>
             <MonsterMakerLabel
               text="Holy"
               tooltip="Values in percent."
               width={ firstLabelWidth }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               value={ this.state.holy }
               min="-100"
               max="100"
               onChange={ this.onChangeHoly }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="range"
-              style={{ width: "100%" }}
+              style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
               value={ this.state.holy }
               onChange={ this.onChangeHoly }
               min="-100"
               max="100"
               step="1"
             />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Death"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.death }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeDeath }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.death }
-              onChange={ this.onChangeDeath }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Ice"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.ice }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeIce }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.ice }
-              onChange={ this.onChangeIce }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Fire"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.fire }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeFire }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.fire }
-              onChange={this.onChangeFire}
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Earth"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.earth }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeEarth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.earth }
-              onChange={ this.onChangeEarth }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Energy"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.energy }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeEnergy }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.energy }
-              onChange={ this.onChangeEnergy }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Physical"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.physical }
-              min="-100"
-              max="100"
-              onChange={ this.onChangePhysical }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.physical }
-              onChange={ this.onChangePhysical }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Life Drain"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.lifeDrain }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeLifeDrain }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.lifeDrain }
-              onChange={ this.onChangeLifeDrain }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Drown"
-              tooltip="Values in percent."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.drown }
-              min="-100"
-              max="100"
-              onChange={ this.onChangeDrown }
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="range"
-              style={{ width: "100%" }}
-              value={ this.state.drown }
-              onChange={ this.onChangeDrown }
-              min="-100"
-              max="100"
-              step="1"
-            />
-          </li>
-        </ul>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Death"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.death }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeDeath }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.death }
+            onChange={ this.onChangeDeath }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Ice"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.ice }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeIce }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.ice }
+            onChange={ this.onChangeIce }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Fire"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.fire }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeFire }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.fire }
+            onChange={this.onChangeFire}
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Earth"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.earth }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeEarth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.earth }
+            onChange={ this.onChangeEarth }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Energy"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.energy }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeEnergy }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.energy }
+            onChange={ this.onChangeEnergy }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Physical"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.physical }
+            min="-100"
+            max="100"
+            onChange={ this.onChangePhysical }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.physical }
+            onChange={ this.onChangePhysical }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Life Drain"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.lifeDrain }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeLifeDrain }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.lifeDrain }
+            onChange={ this.onChangeLifeDrain }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Drown"
+            tooltip="Values in percent."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.drown }
+            min="-100"
+            max="100"
+            onChange={ this.onChangeDrown }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="range"
+            style={{ width: "100%", marginLeft: 3, marginRight: 3 }}
+            value={ this.state.drown }
+            onChange={ this.onChangeDrown }
+            min="-100"
+            max="100"
+            step="1"
+          />
+        </FlexibleGridContainer>
       </div>
     );
   }

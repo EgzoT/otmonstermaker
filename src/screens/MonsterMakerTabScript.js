@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput} from '../components';
+import { FlexibleGridContainer } from '../components/FlexibleGrid';
 
 class MonsterMakerTabScript extends React.Component {
   constructor(props) {
@@ -24,44 +25,37 @@ class MonsterMakerTabScript extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <MonsterMakerInput
-                  type="checkbox"
-                  defaultChecked={this.props.appData.getScript().getChecked()}
-                  onChange={this.onChangeChecked}
-                  tooltip="Check on to add script."
-                />
-              </td>
-              <td>
-                <MonsterMakerLabel
-                  text="Script"
-                  tooltip="Check on to add script."
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Script"
-              disabled={!this.props.appData.getScript().getChecked()}
-              tooltip="There you can use creaturescripts made for certain monsters.<br>You put this tag between flags and attacks."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="text"
-              defaultValue={this.props.appData.getScript().getScript()}
-              onChange={this.onChangeScript}
-              disabled={!this.props.appData.getScript().getChecked()}
-            />
-          </li>
-        </ul>
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
+        <FlexibleGridContainer>
+          <MonsterMakerInput
+            type="checkbox"
+            defaultChecked={ this.props.appData.getScript().getChecked() }
+            onChange={ this.onChangeChecked }
+            tooltip="Check on to add script."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerLabel
+            text="Script"
+            tooltip="Check on to add script."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Script"
+            disabled={ !this.props.appData.getScript().getChecked() }
+            tooltip="There you can use creaturescripts made for certain monsters.<br>You put this tag between flags and attacks."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="text"
+            defaultValue={ this.props.appData.getScript().getScript() }
+            onChange={ this.onChangeScript }
+            disabled={ !this.props.appData.getScript().getChecked() }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
       </div>
     );
   }

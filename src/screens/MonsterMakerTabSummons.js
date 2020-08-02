@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+import { FlexibleGridContainer } from '../components/FlexibleGrid';
 
 const firstLabelWidth = { minWidth: 150 }
 
@@ -99,24 +100,24 @@ class MonsterMakerTabSummons extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Max summons"
-              tooltip="How many summons can your monster have in total."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.maxSummons }
-              min="0"
-              max="100"
-              onChange={ this.onChangeMaxSummons }
-            />
-          </li>
-        </ul>
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Max summons"
+            tooltip="How many summons can your monster have in total."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.maxSummons }
+            min="0"
+            max="100"
+            onChange={ this.onChangeMaxSummons }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+
         <MonsterMakerItemsTable
           data = { this.props.appData.getSummons().getAllXMLSummons() }
           changeActiveItem = { this.setActiveItem }
@@ -134,75 +135,68 @@ class MonsterMakerTabSummons extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+
+        <FlexibleGridContainer>
             <MonsterMakerLabel
               text="Summon name"
               tooltip="Put name of the monster you want to be summoned by your creature."
               width={ firstLabelWidth }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="text"
               value={ this.state.summonName }
               onChange={ this.onChangeSummonName }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Interval"
-              tooltip="How often monster will be summon."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.interval }
-              min="1000"
-              onChange={ this.onChangeInterval }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Chance"
-              tooltip="Chance to summon successfully (in %)."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.chance }
-              min="1"
-              max="100"
-              onChange={ this.onChangeChance }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Max"
-              tooltip="How much of each kind of summons it can have at max."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.max }
-              min="1"
-              max="100"
-              onChange={ this.onChangeMax }
-            />
-          </li>
-        </ul>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Interval"
+            tooltip="How often monster will be summon."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.interval }
+            min="1000"
+            onChange={ this.onChangeInterval }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Chance"
+            tooltip="Chance to summon successfully (in %)."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.chance }
+            min="1"
+            max="100"
+            onChange={ this.onChangeChance }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Max"
+            tooltip="How much of each kind of summons it can have at max."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.max }
+            min="1"
+            max="100"
+            onChange={ this.onChangeMax }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
       </div>
     );
   }

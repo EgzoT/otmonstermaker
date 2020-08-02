@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 
 import { raceSelect, skullSelect } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect} from '../components';
+import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 
 const firstLabelWidth = { minWidth: 200 }
 
@@ -112,353 +113,331 @@ class MonsterMakerTabMonster extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Monster name:"
-              tooltip="Put your monster name."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="text"
-              defaultValue={this.props.appData.getMonster().getName()}
-              onChange={this.onChangeName}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Name description:"
-              tooltip="Put description of your monster.<br>Example:<br>'A demon loses 5 hitpoints due to an attack by a test.'<br>'a test' is name description."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="text"
-              defaultValue={this.props.appData.getMonster().getNameDescription()}
-              onChange={this.onChangeNameDescription}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Race:"
-              tooltip="Choose race for monster."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInputSelect
-              selectItems={raceSelect}
-              defaultValue={this.props.appData.getMonster().getRace()}
-              onChange={this.onChangeRace}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Experience:"
-              tooltip="Choose how many experience points gain player for kill monster."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getExperience()}
-              onChange={this.onChangeExperience}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Skull:"
-              tooltip="Choose skulls type for your monster to have.<br>Set 'none' to don't set skull."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInputSelect
-              selectItems={skullSelect}
-              defaultValue={this.props.appData.getMonster().getSkull()}
-              onChange={this.onChangeSkull}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Speed:"
-              tooltip="Choose speed for your monster.<br>Set it to '0' means your monster won't move at all."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getSpeed()}
-              onChange={this.onChangeSpeed}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Mana cost:"
-              tooltip="You can configure mana cost needed for the summon of this monster.<br>You need to turn on flag 'summonable' or 'convinceable'."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getManaCost()}
-              onChange={this.onChangeManaCost}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Health:"
-              tooltip="Set health points for your monster."
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Now:"
-              tooltip="How much health points will have monster when he spawned."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getHealthNow()}
-              onChange={this.onChangeHealthNow}
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Max:"
-              tooltip="Maximum health points of monster.<br>This value needs to be equal or greater than in 'Now'."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getHealthMax()}
-              onChange={this.onChangeHealthMax}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', padding: 5, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="radio"
-              onChange={this.onChangeLookType}
-              value="0"
-              checked={this.props.appData.getMonster().getLookType() === "0"}
-              tooltip="This is where you set up outfit of your monster."
-            />
-          </li>
-          <li style={{float: 'left', padding: 0, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Look Type"
-              tooltip="This is where you set up outfit of your monster."
-            />
-          </li>
-          <li style={{float: 'left', padding: 5, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="radio"
-              onChange={this.onChangeLookType}
-              value="1"
-              checked={this.props.appData.getMonster().getLookType() === "1"}
-              tooltip="This is where you set up outfit from item id for your monster.<br>For example for id '3031', your monster look like 'Gold Coin'."
-            />
-          </li>
-          <li style={{float: 'left', padding: 0, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Monster name:"
+            tooltip="Put your monster name."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="text"
+            defaultValue={ this.props.appData.getMonster().getName() }
+            onChange={ this.onChangeName }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Name description:"
+            tooltip="Put description of your monster.<br>Example:<br>'A demon loses 5 hitpoints due to an attack by a test.'<br>'a test' is name description."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="text"
+            defaultValue={ this.props.appData.getMonster().getNameDescription() }
+            onChange={ this.onChangeNameDescription }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Race:"
+            tooltip="Choose race for monster."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInputSelect
+            selectItems={ raceSelect }
+            defaultValue={ this.props.appData.getMonster().getRace() }
+            onChange={ this.onChangeRace }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Experience:"
+            tooltip="Choose how many experience points gain player for kill monster."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            min="0"
+            defaultValue={ this.props.appData.getMonster().getExperience() }
+            onChange={ this.onChangeExperience }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Skull:"
+            tooltip="Choose skulls type for your monster to have.<br>Set 'none' to don't set skull."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInputSelect
+            selectItems={ skullSelect }
+            defaultValue={ this.props.appData.getMonster().getSkull() }
+            onChange={ this.onChangeSkull }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Speed:"
+            tooltip="Choose speed for your monster.<br>Set it to '0' means your monster won't move at all."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            min="0"
+            defaultValue={ this.props.appData.getMonster().getSpeed() }
+            onChange={ this.onChangeSpeed }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Mana cost:"
+            tooltip="You can configure mana cost needed for the summon of this monster.<br>You need to turn on flag 'summonable' or 'convinceable'."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            min="0"
+            defaultValue={ this.props.appData.getMonster().getManaCost() }
+            onChange={ this.onChangeManaCost }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Health:"
+            tooltip="Set health points for your monster."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerLabel
+                text="Now:"
+                tooltip="How much health points will have monster when he spawned."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerInput
+                type="number"
+                min="0"
+                defaultValue={ this.props.appData.getMonster().getHealthNow() }
+                onChange={ this.onChangeHealthNow }
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+            </FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerLabel
+                text="Max:"
+                tooltip="Maximum health points of monster.<br>This value needs to be equal or greater than in 'Now'."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerInput
+                type="number"
+                min="0"
+                defaultValue={ this.props.appData.getMonster().getHealthMax() }
+                onChange={ this.onChangeHealthMax }
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+            </FlexibleGrid>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerInput
+                type="radio"
+                onChange={ this.onChangeLookType }
+                value="0"
+                checked={ this.props.appData.getMonster().getLookType() === "0" }
+                tooltip="This is where you set up outfit of your monster."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerLabel
+                text="Look Type"
+                tooltip="This is where you set up outfit of your monster."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+            </FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerInput
+                type="radio"
+                onChange={ this.onChangeLookType }
+                value="1"
+                checked={ this.props.appData.getMonster().getLookType() === "1" }
+                tooltip="This is where you set up outfit from item id for your monster.<br>For example for id '3031', your monster look like 'Gold Coin'."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerLabel
                 text="Look TypeEx"
                 tooltip="This is where you set up outfit from item id for your monster.<br>For example for id '3031', your monster look like 'Gold Coin'."
+                style={{ marginLeft: 3, marginRight: 3 }}
               />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="1"
-              defaultValue={this.props.appData.getMonster().getLookTypeValue()}
-              onChange={this.onChangeLookTypeValue}
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+            </FlexibleGrid>
+          </FlexibleGrid>
+          <MonsterMakerInput
+            type="number"
+            min="1"
+            defaultValue={ this.props.appData.getMonster().getLookTypeValue() }
+            onChange={ this.onChangeLookTypeValue }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Head:"
               tooltip="Choose color id for head.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
               max="132"
-              defaultValue={this.props.appData.getMonster().getHead()}
-              onChange={this.onChangeHead}
+              defaultValue={ this.props.appData.getMonster().getHead() }
+              onChange={ this.onChangeHead }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Body:"
               tooltip="Choose color id for body.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
               max="132"
-              defaultValue={this.props.appData.getMonster().getBody()}
-              onChange={this.onChangeBody}
+              defaultValue={ this.props.appData.getMonster().getBody() }
+              onChange={ this.onChangeBody }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Legs:"
               tooltip="Choose color id for legs.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
               max="132"
-              defaultValue={this.props.appData.getMonster().getLegs()}
-              onChange={this.onChangeLegs}
+              defaultValue={ this.props.appData.getMonster().getLegs() }
+              onChange={ this.onChangeLegs }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Feet:"
               tooltip="Choose color id for feet.<br>Works only if monster has outfit which can be edited with colors like player outfits."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
               max="132"
-              defaultValue={this.props.appData.getMonster().getFeet()}
-              onChange={this.onChangeFeet}
+              defaultValue={ this.props.appData.getMonster().getFeet() }
+              onChange={ this.onChangeFeet }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Addons:"
               tooltip="You can type addons for your monster.<br>'0' means no addons, '1' means first addon, '2' means second addon, '3' means both addons.<br>Works only if monster has outfit which can be edited with addons."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
               max="3"
-              defaultValue={this.props.appData.getMonster().getAddons()}
-              onChange={this.onChangeAddons}
+              defaultValue={ this.props.appData.getMonster().getAddons() }
+              onChange={ this.onChangeAddons }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Mount:"
               tooltip="You can type mount for your creature.<br>Type mount='0' if you don't want your monster to have any mounts."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="0"
-              defaultValue={this.props.appData.getMonster().getMount()}
-              onChange={this.onChangeMount}
+              defaultValue={ this.props.appData.getMonster().getMount() }
+              onChange={ this.onChangeMount }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Corpse:"
-              tooltip="Set monster corpse<br>If you want your monster to have any loot, set only containers."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getCorpse()}
-              onChange={this.onChangeCorpse}
-            />
-          </li>
-        </ul>
-        {/*TODO*/}
-        {/*<ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            {label}
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            {input}
-          </li>
-        </ul>*/}
-        {/*TODO*/}
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Targetchange:"
-              tooltip="You can set up monster retarget."
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Interval:"
-              tooltip="How often it will try to change it\'s target (in milliseconds)."                  
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getTargetchangeInterval()}
-              onChange={this.onChangeTargetchangeInterval}
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Chance:"
-              tooltip="It's the chance to retarget successfully.<br>Put '0' if you don't want your monster to retarget at all."
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              min="0"
-              defaultValue={this.props.appData.getMonster().getTargetchangeChance()}
-              onChange={this.onChangeTargetchangeChance}
-            />
-          </li>
-        </ul>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Corpse:"
+            tooltip="Set monster corpse<br>If you want your monster to have any loot, set only containers."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            min="0"
+            defaultValue={ this.props.appData.getMonster().getCorpse() }
+            onChange={ this.onChangeCorpse }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Targetchange:"
+            tooltip="You can set up monster retarget."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerLabel
+                text="Interval:"
+                tooltip="How often it will try to change it\'s target (in milliseconds)."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerInput
+                type="number"
+                min="0"
+                defaultValue={ this.props.appData.getMonster().getTargetchangeInterval() }
+                onChange={ this.onChangeTargetchangeInterval }
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+            </FlexibleGrid>
+            <FlexibleGrid>
+              <MonsterMakerLabel
+                text="Chance:"
+                tooltip="It's the chance to retarget successfully.<br>Put '0' if you don't want your monster to retarget at all."
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              <MonsterMakerInput
+                type="number"
+                min="0"
+                defaultValue={ this.props.appData.getMonster().getTargetchangeChance() }
+                onChange={ this.onChangeTargetchangeChance }
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+            </FlexibleGrid>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
         <table>
           <tbody>
             <tr>

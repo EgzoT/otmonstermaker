@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 
 import { defenseName, areaEffect } from '../consts'
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 
 const firstLabelWidth = { minWidth: 140 }
 const secondLabelWidth = { minWidth: 122 }
@@ -167,37 +168,39 @@ class MonsterMakerTabDefenses extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html="true" />
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+
+        <FlexibleGridContainer>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Armor:"
               tooltip="Values which will reduce incoming physical damage."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="1"
               value={ this.state.armor }
               onChange={ this.onChangeArmor }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Defense:"
               tooltip="Reduce incoming physical damage."
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="1"
               value={ this.state.defense }
               onChange={ this.onChangeDefense }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+
         <MonsterMakerItemsTable
           data = { this.props.appData.getDefenses().getAllXMLdefenses() }
           changeActiveItem = { this.setActiveItem }
@@ -215,175 +218,161 @@ class MonsterMakerTabDefenses extends React.Component {
             tooltip = "Delete from table"
           />
         </div>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Defense name"
-              tooltip="Choose defense type."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInputSelect
-              selectItems={ defenseName }
-              value={ this.state.defenseName }
-              onChange={ this.onChangeDefenseName }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Interval"
-              tooltip="It's how often the spell will be cast - 2000 = 2seconds."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.interval }
-              min="1000"
-              onChange={ this.onChangeInterval }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Chance"
-              tooltip="It's the chance to cast the spell successfully (in %)."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.chance }
-              min="1"
-              onChange={ this.onChangeChance }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Defense name"
+            tooltip="Choose defense type."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInputSelect
+            selectItems={ defenseName }
+            value={ this.state.defenseName }
+            onChange={ this.onChangeDefenseName }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Interval"
+            tooltip="It's how often the spell will be cast - 2000 = 2seconds."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.interval }
+            min="1000"
+            onChange={ this.onChangeInterval }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Chance"
+            tooltip="It's the chance to cast the spell successfully (in %)."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.chance }
+            min="1"
+            onChange={ this.onChangeChance }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Min"
               disabled={ this.state.defenseName !== 'healing' }
               tooltip="Minimum heal points."
               width={ firstLabelWidth }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="1"
               value={ this.state.min }
               onChange={ this.onChangeMin }
               disabled={ this.state.defenseName !== 'healing' }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
+          </FlexibleGrid>
+          <FlexibleGrid>
             <MonsterMakerLabel
               text="Max"
               disabled={ this.state.defenseName !== 'healing' }
               tooltip="Maximum heal points."
               width={ firstLabelWidth }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
             <MonsterMakerInput
               type="number"
               min="1"
               value={ this.state.max }
               onChange={ this.onChangeMax }
               disabled={ this.state.defenseName !== 'healing' }
+              style={{ marginLeft: 3, marginRight: 3 }}
             />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="checkbox"
-              checked={ this.state.radiusCheckbox }
-              onChange={ this.onChangeRadiusCheckbox }
-              disabled={ this.state.defenseName !== 'healing' }
-              tooltip="Size of spell area."
-            />
-          </li>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Radius"
-              disabled={ this.state.defenseName !== 'healing' }
-              tooltip="Size of spell area."
-              width={ secondLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.radius }
-              min="1"
-              max="9"
-              onChange={ this.onChangeRadius }
-              disabled={ this.state.defenseName !== 'healing' || !this.state.radiusCheckbox }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Area Effect"
-              tooltip="Choose area effect for spell."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInputSelect
-              selectItems={ areaEffect }
-              value={ this.state.areaeffect }
-              onChange={ this.onChangeAreaeffect }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Duration"
-              disabled={ this.state.defenseName === 'healing' }
-              tooltip="How long it lasts."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.duration }
-              min="1"
-              onChange={ this.onChangeDuration }
-              disabled={ this.state.defenseName === 'healing' }
-            />
-          </li>
-        </ul>
-        <ul style={{listStyleType: 'none', margin: 0, padding: "5px 0px", overflow: 'auto'}}>
-          <li style={{float: 'left', margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerLabel
-              text="Speed change"
-              disabled={ this.state.defenseName !== 'speed' }
-              tooltip="Starting from monsterBaseSpeed+numbers, so if monsterBaseSpeed is 200 then put more than 200 in order to have results."
-              width={ firstLabelWidth }
-            />
-          </li>
-          <li style={{float: 'left', padding: 2, margin: "0px 5px 0px 0px"}}>
-            <MonsterMakerInput
-              type="number"
-              value={ this.state.speedChange }
-              min="1"
-              onChange={ this.onChangeSpeedChange }
-              disabled={ this.state.defenseName !== 'speed' }
-            />
-          </li>
-        </ul>
+          </FlexibleGrid>
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerInput
+            type="checkbox"
+            checked={ this.state.radiusCheckbox }
+            onChange={ this.onChangeRadiusCheckbox }
+            disabled={ this.state.defenseName !== 'healing' }
+            tooltip="Size of spell area."
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerLabel
+            text="Radius"
+            disabled={ this.state.defenseName !== 'healing' }
+            tooltip="Size of spell area."
+            width={ secondLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.radius }
+            min="1"
+            max="9"
+            onChange={ this.onChangeRadius }
+            disabled={ this.state.defenseName !== 'healing' || !this.state.radiusCheckbox }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Area Effect"
+            tooltip="Choose area effect for spell."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInputSelect
+            selectItems={ areaEffect }
+            value={ this.state.areaeffect }
+            onChange={ this.onChangeAreaeffect }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Duration"
+            disabled={ this.state.defenseName === 'healing' }
+            tooltip="How long it lasts."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.duration }
+            min="1"
+            onChange={ this.onChangeDuration }
+            disabled={ this.state.defenseName === 'healing' }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
+        <FlexibleGridContainer>
+          <MonsterMakerLabel
+            text="Speed change"
+            disabled={ this.state.defenseName !== 'speed' }
+            tooltip="Starting from monsterBaseSpeed+numbers, so if monsterBaseSpeed is 200 then put more than 200 in order to have results."
+            width={ firstLabelWidth }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+          <MonsterMakerInput
+            type="number"
+            value={ this.state.speedChange }
+            min="1"
+            onChange={ this.onChangeSpeedChange }
+            disabled={ this.state.defenseName !== 'speed' }
+            style={{ marginLeft: 3, marginRight: 3 }}
+          />
+        </FlexibleGridContainer>
       </div>
     );
   }
