@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable, MonsterMakerButton } from '../components';
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable } from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
+import { CircleAnimationButtonDark } from '../components/CircleAnimationButton-react/CircleAnimationButtons';
 
 class MonsterMakerTabVoices extends React.Component {
   constructor(props) {
@@ -123,16 +124,18 @@ class MonsterMakerTabVoices extends React.Component {
           changeActiveItem = { this.setActiveItem }
           activeItem = { this.state.activeItem }
         />
-        <div style = {{ display: 'initial' }}>
-          <MonsterMakerButton
-            icon = "ra-health"
+        <div style = {{ display: 'flex' }}>
+          <CircleAnimationButtonDark
+            icon={ <i className={ "ra ra-health" } style={{ fontSize: 20, margin: 'auto' }} ></i> }
+            text={ "Add" }
             onClick = { this.clickAddButton }
-            tooltip = "Add to table"
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
           />
-          <MonsterMakerButton
-            icon = "ra-burning-embers"
+          <CircleAnimationButtonDark
+            icon={ <i className={ "ra ra-burning-embers" } style={{ fontSize: 20, margin: 'auto' }} ></i> }
+            text={ "Delete" }
             onClick = { this.clickDeleteButton }
-            tooltip = "Delete from table"
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 5 }}
           />
         </div>
 

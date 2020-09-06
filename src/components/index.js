@@ -1,4 +1,3 @@
-export { default as MonsterMakerButton } from './MonsterMakerButton';
 export { default as MonsterMakerCode } from './MonsterMakerCode';
 export { default as MonsterMakerInput } from './MonsterMakerInput';
 export { default as MonsterMakerInputSelect } from './MonsterMakerInputSelect';

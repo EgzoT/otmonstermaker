@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerButton, MonsterMakerCode} from '../components';
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerCode} from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
+import { CircleAnimationButtonDark } from '../components/CircleAnimationButton-react/CircleAnimationButtons';
 
 class MonsterMakerTabIO extends React.Component {
   constructor(props) {
@@ -123,11 +124,13 @@ class MonsterMakerTabIO extends React.Component {
           </FlexibleGrid>
         </FlexibleGridContainer>
 
-        <MonsterMakerButton
-          icon = "ra-load"
-          onClick = { this.downloadFile }
-          tooltip = "Download file"
-        />
+        <CircleAnimationButtonDark
+            icon={ <i className={ "ra ra-load" } style={{ fontSize: 20, margin: 'auto' }} ></i> }
+            text={ "Download file" }
+            onClick = { this.downloadFile }
+            style={{ margin: 5 }}
+            width={ 180 }
+          />
         <MonsterMakerLabel text="Import" />
 
         <hr/>
@@ -137,20 +140,24 @@ class MonsterMakerTabIO extends React.Component {
           style={{ margin: 5 }}
           onChange={ this.onChangePath }
         />
-        <MonsterMakerButton
-          icon = "ra-save"
-          onClick = { this.uploadFile }
-          tooltip = "Load file"
-        />
+        <CircleAnimationButtonDark
+            icon={ <i className={ "ra ra-save" } style={{ fontSize: 20, margin: 'auto' }} ></i> }
+            text={ "Load file" }
+            onClick = { this.uploadFile }
+            style={{ margin: 5 }}
+            width={ 180 }
+          />
         <MonsterMakerLabel text="Other" />
 
         <hr/>
 
-        <MonsterMakerButton
-          icon = "ra-recycle"
-          onClick = { this.setDefaultValue }
-          tooltip = "Clear all data"
-        />
+        <CircleAnimationButtonDark
+            icon={ <i className={ "ra ra-recycle" } style={{ fontSize: 20, margin: 'auto' }} ></i> }
+            text={ "Clear all data" }
+            onClick = { this.setDefaultValue }
+            style={{ margin: 5 }}
+            width={ 180 }
+          />
 
         <MonsterMakerCode text={ this.props.appData.getLineMonstersXML() } />
         <MonsterMakerCode text={ this.props.appData.getXML() } />
