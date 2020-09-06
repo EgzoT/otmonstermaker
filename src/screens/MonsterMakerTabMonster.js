@@ -305,7 +305,8 @@ class MonsterMakerTabMonster extends React.Component {
             <OTColorInput
               value={ this.props.appData.getMonster().getHead() }
               onChange={ this.onChangeHead }
-              style={{ container: { marginLeft: 3, marginRight: 3 } }}
+              style={{ marginLeft: 3, marginRight: 3 }}
+              fullStyle={{ button: { outer: { width: '3em', height: '1.5em' } } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -317,7 +318,8 @@ class MonsterMakerTabMonster extends React.Component {
             <OTColorInput
               value={ this.props.appData.getMonster().getBody() }
               onChange={ this.onChangeBody }
-              style={{ container: { marginLeft: 3, marginRight: 3 } }}
+              style={{ marginLeft: 3, marginRight: 3 }}
+              fullStyle={{ button: { outer: { width: '3em', height: '1.5em' } } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -329,7 +331,8 @@ class MonsterMakerTabMonster extends React.Component {
             <OTColorInput
               value={ this.props.appData.getMonster().getLegs() }
               onChange={ this.onChangeLegs }
-              style={{ container: { marginLeft: 3, marginRight: 3 } }}
+              style={{ marginLeft: 3, marginRight: 3 }}
+              fullStyle={{ button: { outer: { width: '3em', height: '1.5em' } } }}
             />
           </FlexibleGrid>
           <FlexibleGrid>
@@ -341,7 +344,8 @@ class MonsterMakerTabMonster extends React.Component {
             <OTColorInput
               value={ this.props.appData.getMonster().getFeet() }
               onChange={ this.onChangeFeet }
-              style={{ container: { marginLeft: 3, marginRight: 3 } }}
+              style={{ marginLeft: 3, marginRight: 3 }}
+              fullStyle={{ button: { outer: { width: '3em', height: '1.5em' } } }}
             />
           </FlexibleGrid>
         </FlexibleGridContainer>

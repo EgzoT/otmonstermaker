@@ -1,9 +1,9 @@
-var ROWS = 7;
-var COLUMNS = 19;
-var MIN_COLOR = 0;
-var MAX_COLOR = 132;
+const ROWS = 7;
+const COLUMNS = 19;
+const MIN_COLOR = 0;
+const MAX_COLOR = 132;
 
-var COLORS = {
+const COLORS = {
     0:   '#ffffff',
     1:   '#ffd4bf',
     2:   '#ffe9bf',

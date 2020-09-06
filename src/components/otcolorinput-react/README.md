@@ -18,23 +18,33 @@ Paste component folder to project and add:
 import OTColorInput from './PATH/OTColorInput';
 ```
 
-JSX Component:
+## JSX Component:
 
 ```jsx
 <OTColorInput
     value={ 55 }                    //Default: 0
     onChange={ this.onChangeValue } //Default: null
-    style={ styleArray }            //Default: {}
 />
 ```
 
-## Add default starting color by id:
+# Options
+
+```jsx
+<OTColorInput
+    value={ 55 }                    //Default: 0
+    onChange={ this.onChangeValue } //Default: null
+    style={{ margin: 'auto' }}      //Default: {}
+    fullStyle={ style }             //Default: {}
+/>
+```
+
+# Add default starting color by id:
 
 ```jsx
 value={ 55 } //Default: 0
 ```
 
-## Getting value from input component:
+# Getting value from input component:
 
 Create function to get changing value:
 
@@ -50,7 +60,7 @@ Set to component by:
 onChange={ this.onChangeValue } //Default: null
 ```
 
-## Styling
+# Full styling
 
 Style template:
 
@@ -106,5 +116,5 @@ let style = {
 Put to component:
 
 ```jsx
-style={ style } //Default: {}
+fullStyle={ style } //Default: {}
 ```
