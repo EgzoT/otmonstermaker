@@ -93,9 +93,14 @@ class AppData {
 
     //Download
 
+    // https://developer.mozilla.org/en-US/docs/Glossary/Base64#solution_.232_.e2.80.93_rewriting_atob()_and_btoa()_using_typedarrays_and_utf-8
+    utf8_to_b64 = (str) => {
+        return window.btoa(unescape(encodeURIComponent(str)));
+    }
+
     downloadFile = () => {
         var a = document.createElement('a');
-        a.href = 'data:text/plain;base64,' + btoa(this.getXML());
+        a.href = "data:application/octet-stream;charset=utf-8;base64," + this.utf8_to_b64(this.getXML());
         a.textContent = 'download';
         a.download = this.getIO().getName() + ".xml";
         a.click();
