@@ -21,16 +21,16 @@ sudo docker compose down
 ## Install new npm package
 
 ```sh
-sudo docker exec -it passwords-generator-web-passwords-generator-web-1 bash
-cd passwords-generator-web
+sudo docker exec -it otmonstermaker-otmonstermaker-1 bash
+cd otmonstermaker
 npm i <package_name>
 ```
 
 ## Uninstall npm package
 
 ```sh
-sudo docker exec -it passwords-generator-web-passwords-generator-web-1 bash
-cd passwords-generator-web
+sudo docker exec -it otmonstermaker-otmonstermaker-1 bash
+cd otmonstermaker
 npm uninstall <package_name>
 ```
 

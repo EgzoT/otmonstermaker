@@ -1,5 +1,5 @@
 import React from 'react';
-//import ReactTooltip from 'react-tooltip';
+// import { Tooltip } from 'react-tooltip';
 
 const MonsterMakerLabelStyle = {
   fontSize: '20px'
@@ -12,7 +12,7 @@ class MonsterMakerLabel extends React.Component {
         <label style={this.props.disabled ? {opacity: 0.5} : null}>
           {this.props.text}
         </label>
-        {/*<ReactTooltip place="bottom" type="dark" effect="float" html="true" />*/}
+        {/*<Tooltip place="bottom" type="dark" effect="float" html="true" />*/}
       </div>
     );
   }

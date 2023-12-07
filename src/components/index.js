@@ -4,5 +4,3 @@ export { default as MonsterMakerInputSelect } from './MonsterMakerInputSelect';
 export { default as MonsterMakerItemsTable } from './MonsterMakerItemsTable';
 export { default as MonsterMakerItemsTableTr } from './MonsterMakerItemsTableTr';
 export { default as MonsterMakerLabel } from './MonsterMakerLabel';
-export { default as MonsterMakerMenu } from './MonsterMakerMenu';
-export { default as MonsterMakerMenuItem } from './MonsterMakerMenuItem';

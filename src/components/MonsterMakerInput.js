@@ -1,5 +1,5 @@
 import React from 'react';
-//import ReactTooltip from 'react-tooltip';
+// import { Tooltip } from 'react-tooltip';
 
 class MonsterMakerInput extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class MonsterMakerInput extends React.Component {
           disabled={this.props.disabled}
           value={this.props.value}
         />
-        {/*<ReactTooltip place="bottom" type="dark" effect="float"/>*/}
+        {/*<Tooltip place="bottom" type="dark" effect="float"/>*/}
       </div>
     );
   }

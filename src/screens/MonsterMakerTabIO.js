@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerCode} from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
@@ -85,7 +85,7 @@ class MonsterMakerTabIO extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
 
         <MonsterMakerLabel text="Export" />
         <hr/>

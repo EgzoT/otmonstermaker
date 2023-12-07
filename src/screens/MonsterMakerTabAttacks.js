@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 import { areaEffect, shotEffect } from '../consts';
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable } from '../components';
@@ -339,7 +339,7 @@ class MonsterMakerTabAttacks extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <ReactTooltip place="bottom" type="dark" effect="float" html={ true } />
+        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
 
         <MonsterMakerItemsTable
           data = { this.props.appData.getAttacks().getAllXMLattacks() }
