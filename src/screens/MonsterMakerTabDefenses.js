@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
 import { defenseName, areaEffect } from '../consts';
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable } from '../components';
@@ -169,8 +168,6 @@ class MonsterMakerTabDefenses extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <FlexibleGridContainer>
           <FlexibleGrid>
             <MonsterMakerLabel

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
-import { MonsterMakerLabel, MonsterMakerInput} from '../components';
+import { MonsterMakerLabel, MonsterMakerInput } from '../components';
 import { FlexibleGridContainer } from '../components/FlexibleGrid';
 
 const firstLabelWidth = { minWidth: 120 }
@@ -71,8 +70,6 @@ class MonsterMakerTabElements extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <MonsterMakerLabel
           text="Elements"
           tooltip="Resistance or weakness to certain elements to your monster.<br>+ Minus values - Means that your monster will be weak to certain element.<br>You can put there any value you want, starting from -1.<br>+ Positive values - Means that your monster will be resistant to certain element.<br>You can put there values starting from 1 ending on 99 (100 would mean full immunity and there's different category).<br>* If you put here 100% resistance to for example fire, you monster yes will be immune to fire but it will also WALK AROUND FIRE FIELDS,<br>not onto them as it's supposed to be and you don't want that to happen."

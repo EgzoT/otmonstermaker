@@ -1,16 +1,19 @@
-import React from 'react';
-
-import AppData from './js/AppData.js';
+import AppData from './js/AppData';
 
 import './App.css';
+import 'react-tooltip/dist/react-tooltip.css';
 
-import MonsterMakerMenu from './components/MonsterMakerMenu.js';
+import { Tooltip } from 'react-tooltip';
+import MonsterMakerMenu from './components/MonsterMakerMenu';
 
 function App() {
   var appData = new AppData();
 
   return (
-    <MonsterMakerMenu appData={appData} />
+    <div>
+      <MonsterMakerMenu appData={ appData } />
+      <Tooltip id="tooltip" />
+    </div>
   );
 }
 

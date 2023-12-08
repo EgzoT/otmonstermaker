@@ -1,12 +1,17 @@
 import React from 'react';
-// import { Tooltip } from 'react-tooltip';
 
 class MonsterMakerInput extends React.Component {
   render() {
     const style = this.props.disabled ? {...this.props.style, ...{opacity: 0.5}} : this.props.style;
 
     return (
-      <div data-tip={ this.props.tooltip } >
+      <div
+        data-tooltip-id="tooltip"  
+        data-tooltip-html={ this.props.tooltip }
+        data-tooltip-place="bottom"
+        data-tooltip-type="dark"
+        data-tooltip-effect="float"
+      >
         <input
           type={this.props.type}
           name="name"
@@ -21,7 +26,6 @@ class MonsterMakerInput extends React.Component {
           disabled={this.props.disabled}
           value={this.props.value}
         />
-        {/*<Tooltip place="bottom" type="dark" effect="float"/>*/}
       </div>
     );
   }

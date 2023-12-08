@@ -1,8 +1,7 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
 import { raceSelect, skullSelect } from '../consts'
-import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect} from '../components';
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect } from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 import OTColorInput from '../components/otcolorinput-react/OTColorInput';
 
@@ -114,8 +113,6 @@ class MonsterMakerTabMonster extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <FlexibleGridContainer>
           <MonsterMakerLabel
             text="Monster name:"

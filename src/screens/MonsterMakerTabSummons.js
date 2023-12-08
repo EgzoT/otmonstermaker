@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerItemsTable } from '../components';
 import { FlexibleGridContainer } from '../components/FlexibleGrid';
@@ -101,8 +100,6 @@ class MonsterMakerTabSummons extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <FlexibleGridContainer>
           <MonsterMakerLabel
             text="Max summons"

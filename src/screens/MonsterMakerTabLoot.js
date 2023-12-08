@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
 import { subtype } from '../consts';
 import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerInputSelect, MonsterMakerItemsTable } from '../components';
@@ -216,8 +215,6 @@ class MonsterMakerTabLoot extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <MonsterMakerItemsTable
           data = { this.props.appData.getLoot().getAllXMLLoot() }
           changeActiveItem = { this.setActiveItem }

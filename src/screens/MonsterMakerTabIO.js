@@ -1,7 +1,6 @@
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 
-import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerCode} from '../components';
+import { MonsterMakerLabel, MonsterMakerInput, MonsterMakerCode } from '../components';
 import { FlexibleGridContainer, FlexibleGrid } from '../components/FlexibleGrid';
 import { CircleAnimationButtonDark } from '../components/CircleAnimationButton-react/CircleAnimationButtons';
 
@@ -85,8 +84,6 @@ class MonsterMakerTabIO extends React.Component {
   render() {
     return (
       <div className="tabMenu">
-        <Tooltip place="bottom" type="dark" effect="float" html={ true } />
-
         <MonsterMakerLabel text="Export" />
         <hr/>
 
